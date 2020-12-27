@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2020 at 06:00 PM
+-- Generation Time: Dec 27, 2020 at 08:38 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `zoo_fundraiser_system`
 --
+CREATE DATABASE IF NOT EXISTS `zoo_fundraiser_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `zoo_fundraiser_system`;
 
 -- --------------------------------------------------------
 
@@ -31,7 +33,7 @@ CREATE TABLE `adoption` (
   `adoption_id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
   `animal_id` int(5) NOT NULL,
-  `amount` float NOT NULL,
+  `payment_method` tinyint(1) NOT NULL COMMENT '0 is for delivering perks for premium members, 1 is for Credit or Debit Card, 2 is Online Banking',
   `datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -44,7 +46,8 @@ CREATE TABLE `adoption` (
 CREATE TABLE `animal` (
   `animal_id` int(5) NOT NULL,
   `animal_name` varchar(20) NOT NULL,
-  `animal_species` varchar(50) NOT NULL
+  `animal_species` varchar(50) NOT NULL,
+  `annual_adoption_price` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,7 +71,7 @@ CREATE TABLE `cart` (
 CREATE TABLE `donation` (
   `donation_id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
-  `donation_type` tinyint(1) NOT NULL COMMENT '0 is one-time donation, 1 is annual donation',
+  `payment_method` tinyint(1) NOT NULL COMMENT '0 is for delivering perks for premium members, 1 is for Credit or Debit Card, 2 is Online Banking',
   `amount` float NOT NULL,
   `datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -105,7 +108,7 @@ CREATE TABLE `merch_cart` (
 CREATE TABLE `orders` (
   `order_id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
-  `payment_method` tinyint(1) NOT NULL COMMENT '0 is for delivering perks for premium members, 1 is for Cash on Delivery, 2 is Online Payment',
+  `payment_method` tinyint(1) NOT NULL COMMENT '0 is for delivering perks for premium members, 1 is for Credit or Debit Card, 2 is Online Banking, 3 is for COD',
   `amount` float NOT NULL,
   `datetime` datetime NOT NULL,
   `delivery_address` varchar(255) NOT NULL
