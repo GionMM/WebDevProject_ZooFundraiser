@@ -15,7 +15,6 @@
       <li><a href="adminadopt.php">Edit Animal Adoption</a></li>
       <li><a href="adminreport.php">Report</a></li>
     </ul>
-    </ul>
 
 		<form action="add_animal2.php" method="post"  enctype="multipart/form-data">
 
