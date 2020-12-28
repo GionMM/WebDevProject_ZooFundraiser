@@ -17,7 +17,7 @@ if(isset($rows['user_id']))
 		?>
 		<script>
 			alert("Login successful!");
-		window.location.href = "adoption.php";
+		window.location.href = "homepage.html";
 	</script>
 	  <?php
 	{
