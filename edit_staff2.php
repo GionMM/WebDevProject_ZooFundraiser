@@ -18,7 +18,7 @@ include 'connect.php';
 		?>
 		<script>
 			alert("Staff informations have been updated.");
-			window.location.href = "adminedit.php?animal_id=<?php echo $user_id; ?>";
+			window.location.href = "adminedit.php?user_id=<?php echo $user_id; ?>";
 		</script>
 		<?php
 	}
@@ -27,7 +27,7 @@ include 'connect.php';
 		?>
 		<script>
 			alert("Fail to update the information.");
-			window.location.href = "edit_staff.php?animal_id=<?php echo $user_id; ?>";
+			window.location.href = "edit_staff.php?user_id=<?php echo $user_id; ?>";
 		</script>
 		<?php
 	}
