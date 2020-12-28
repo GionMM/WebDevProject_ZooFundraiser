@@ -14,7 +14,7 @@
       <li><a href="adoption.html">Animal Adoption</a></li>
     </ul>
 
-    <form action="login2.php" method="post"  enctype="multipart/form-data">
+  <form action="login2.php" method="post"  enctype="multipart/form-data">
 
   <div class="container">
     <h1>Login</h1>
@@ -32,5 +32,6 @@
       <p>Have not registered? <a href="register.php">Register here</a></p>
     </div>
   </div>
+  </form>
 </body>
 </html>

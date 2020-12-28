@@ -14,10 +14,10 @@
       <li><a href="adoption.php">Animal Adoption</a></li>
     </ul>
 
-		<form action="register2.php" method="post"  enctype="multipart/form-data">
+<form action="register2.php" method="post"  enctype="multipart/form-data">
 
 
-<form>
+
     <div class="container">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
