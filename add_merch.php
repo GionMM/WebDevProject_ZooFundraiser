@@ -26,10 +26,10 @@
     <hr>
 
     <label for="merch_name"><b><br>Merchandise Name</br></label>
-    <input type="text" placeholder="Enter animal name" name="merch_name" id="merch_name" required><br>
+    <input type="text" placeholder="Enter merchandise name" name="merch_name" id="merch_name" required><br>
 
     <label for="price"><b><br>Price (RM)</br></label>
-    <input type="number" placeholder="Enter animal species" name="price" id="price" required><br></br>
+    <input type="number" placeholder="Enter price" name="price" id="price" required><br></br>
 
      <button type="submit" class="addbtn">Add</button>
   </div>

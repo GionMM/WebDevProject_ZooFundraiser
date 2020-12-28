@@ -20,7 +20,7 @@ include ('connect.php');
 
   <body>
   <ul class="navigation">
-      <li><a href="homepage.php">Home</a></li>
+      <li><a href="homepage.html">Home</a></li>
       <li><a href="donation.php">Donate</a></li>
       <li><a href="store.php">Store</a></li>
       <li><a href="adoption.php">Animal Adoption</a></li>
