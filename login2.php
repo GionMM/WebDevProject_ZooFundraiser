@@ -14,15 +14,25 @@ if(isset($rows['user_id']))
 {
 	session_start();
 		$_SESSION['user_id'] = $rows['user_id'];
+		$userID = $_SESSION['user_id'];
+		$class = $rows['user_class'];
+		if($class === "0")
+		{
 		?>
 		<script>
 			alert("Login successful!");
 		window.location.href = "homepage.html";
 	</script>
 	  <?php
-	{
-	
-	}
+	    }
+		else{
+		?>
+		<script>
+			alert("Login successful!");
+		window.location.href = "adminedit.php";
+	</script>
+	  <?php	
+		}
 }
 else
 {
