@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ( (isset( $_SESSION[ "loggedin" ] )) && ($_SESSION[ "loggedin" ] == true )) {
+if ( (isset( $_SESSION[ "loggedin" ] )) && ($_SESSION[ "loggedin" ] === true )) {
 	header( "location: main.php" );
 	exit;
 }
@@ -140,7 +140,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 
 <body>
 
-	  <form class="form-signin" method="post" action="" novalidate validate>
+	  <form class="form-signin" method="post" action="" name="myForm" novalidate onSubmit='return validateForm()'>
       <div class="text-center mb-4">
 		  <i class="fa fa-user-circle fa-5x"></i>
         <h1 class="h3 mb-3 font-weight-normal">Login</h1>
@@ -167,7 +167,19 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <input class="btn btn-lg btn-primary btn-block" type="submit"></input>
+      <input class="btn btn-lg btn-primary btn-block" type="submit" ></input>
+	            <script>
+				function validateForm() {
+				  	var x = document.forms["myForm"]["email"].value;
+					var y = document.forms["myForm"]["password"].value;
+
+				  if (x == ""|| y == "" )  {
+					alert("All box must be filled out before submitting");
+					return false;
+				  }
+
+				}
+			</script> 
 <p>Have not registered? <a href="./register.php">Register here</a></p>
       <p class="mt-5 mb-3 text-muted text-center">Copyright © 2020-2021 Universiti Teknikal Malaysia Melaka. All rights reserved.</p>
     </form>
