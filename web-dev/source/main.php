@@ -3,7 +3,8 @@ session_start();
 
 require_once "config.php";
 
-$user_id = $_SESSION['id'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +55,9 @@ $user_id = $_SESSION['id'];
 
 				<?php 
 					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
+						
+						$user_id = $_SESSION['id'];
+						
 						$sqlCartQuantity = 'SELECT sum(quantity) FROM cart WHERE user_id="'.$user_id.'"';
 						
 						$resultCartQuantity = mysqli_query($link, $sqlCartQuantity);
@@ -95,7 +99,8 @@ $user_id = $_SESSION['id'];
 		<div class="overlay">
 		</div>
 		<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-			<source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+<!--			<source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">-->
+			<source src="https://r6---sn-npoeene7.googlevideo.com/videoplayback?expire=1609243963&ei=2sjqX-7EPLmL2_gPhYCokA0&ip=185.43.249.148&id=o-ALEIHNEeUxQBabMgWhR5_N0TP762FJxpceKbTOiaDrB1&itag=137&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=bnlcfAq-syqirZTCoJi-U_AF&gir=yes&clen=5583580&otfp=1&dur=14.999&lmt=1519602741322104&fvip=6&keepalive=yes&c=WEB&n=eG5-A-LqGpc1Ys5m&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cotfp%2Cdur%2Clmt&sig=AOq0QJ8wRQIgZ9h_96CtPLWC7oaOnlWrgKx1RfCh3G2rtHCuIgdlbr4CIQDVcuC5d4uJsdaKtCA70V4TzZxVdrrlQqOFe-i7fU6yzA%3D%3D&rm=sn-2puapox-ig3s7e&req_id=dc0e189bed42a3ee&redirect_counter=2&cm2rm=sn-3c2le7d&cms_redirect=yes&mh=Na&mip=60.52.105.255&mm=34&mn=sn-npoeene7&ms=ltu&mt=1609222110&mv=m&mvi=6&pl=21&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgfHZp-KIOwuaXvQ_Uh7I9Ahb8ygsbrQrygyImPQKDT_ICIQCK_J8djVji0FjUxjfANsH0AnIfFvkcOhvggVM4Tthd4A%3D%3D" type="video/mp4">
 		</video>
 		<div class="container h-100">
 			<div class="d-flex h-100 text-center align-items-center">

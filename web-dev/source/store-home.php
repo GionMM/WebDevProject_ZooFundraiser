@@ -3,8 +3,6 @@ session_start();
 
 require_once "config.php";
 
-$user_id = $_SESSION['id'];
-
 ?>
 <?php
 	if (isset($_POST['addToCart'])) {
@@ -107,6 +105,9 @@ $user_id = $_SESSION['id'];
 
 				<?php 
 					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
+						
+						$user_id = $_SESSION['id'];
+						
 						$sqlCartQuantity = 'SELECT sum(quantity) FROM cart WHERE user_id="'.$user_id.'"';
 						
 						$resultCartQuantity = mysqli_query($link, $sqlCartQuantity);

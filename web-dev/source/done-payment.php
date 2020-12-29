@@ -7,7 +7,7 @@ require_once "config.php";
 <!DOCTYPE html>
 <html>
 <title>
-	BENGKEL PEMANTAPAN APLIKASI MICROSOFT 365 & GOOGLE CLASSROOM DLM PDPC
+	Done Payment - 
 </title>
 <head>
 

@@ -73,7 +73,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 									$_SESSION[ "email" ] = $email;
 									$_SESSION[ "user_class" ] = $fetch['user_class'];
 								
-									header("location: admin-main.php");		  
+									header("location: main.php");		  
 								}
 								
 								else if($fetch['user_class'] == '0')
@@ -86,9 +86,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 									$_SESSION[ "user_class" ] = $fetch['user_class'];
 
 									header("location: main.php");
-									
-									
-//									echo $_SESSION[ "loggedin" ];
+
 								}
 								
 								
@@ -140,7 +138,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 
 <body>
 
-	  <form class="form-signin" method="post" action="" name="myForm" novalidate onSubmit='return validateForm()'>
+	  <form class="form-signin" method="post" action="" name="myForm" novalidate >
       <div class="text-center mb-4">
 		  <i class="fa fa-user-circle fa-5x"></i>
         <h1 class="h3 mb-3 font-weight-normal">Login</h1>
