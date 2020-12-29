@@ -11,6 +11,36 @@ if ( (isset( $_SESSION[ "loggedin" ] )) && ($_SESSION[ "loggedin" ] != true )) {
 
 require_once "config.php";
 ?>
+<?php
+	if (isset($_POST['proceedPayment'])) {
+		
+		$totalSummary = $_POST['amount'];
+		$totalSummary = round($totalSummary, 2);
+		
+		$user_id = $_SESSION['id'];
+		$date = date( 'Y-m-d H:i:s' );
+		
+		
+		$sqlDonation = "INSERT INTO donation (user_id, payment_method, amount, datetime) VALUES ('".$user_id."', '1', '".$totalSummary."', '".$date."')";
+		
+			if(mysqli_query($link, $sqlDonation))
+			{
+				echo "<script>";
+				echo "window.location.href='done-payment.php'";
+				echo "</script>";
+			}
+			else
+			{
+				echo "<script>";
+				echo "alert('There's something wrong.);";
+				echo "</script>";
+			}
+
+		
+	}
+
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,10 +92,6 @@ require_once "config.php";
         </button>	
 			
 					<ul class="navbar-nav ml-auto">
-<!--
-				<li><a class="nav-link" href="#"><span class="fa fa-user-circle"></span> Sign Up</a>
-				</li>
--->
 				<li><a class="nav-link" href="./donation.php"><span class="fa fa-home"></span> Home</a>
 				</li>
 			</ul>
@@ -98,29 +124,42 @@ require_once "config.php";
 									<small class="text-muted">You are free to donate as much or as little an amount.:)</small>
 
 								</div>
-								<span class="text-muted">MYR100
+								<span class="text-muted">
 								</span>
 							</li>
 
 							<li class="list-group-item d-flex justify-content-between">
 								<span>Total (MYR)</span>
-								<strong>100</strong>
+								<strong id="totalSummary">0</strong>
 							</li>
 						</ul>
 					</div>
 					<div class="col-md-8 order-md-1">
 						<h4 class="mb-3">Donation</h4>
 <!--						<form class="needs-validation" novalidate>-->
-						<form>
+						<form name="myForm" onSubmit="validateForm()" method="post">
 							<div class="row">
 								<div class="col-md-12 mb-3">
 									<label>Please enter amount (MYR):</label>
 
 									
-										<input type="text" class="form-control" id="amount" placeholder="" value="" required>
+										<input type="text" class="form-control" id="amount" name="amount" placeholder="" value="" required>
+										<script>
+												var amount = document.querySelector('#amount');
+
+												amount.addEventListener('input', restrictNumber);
+												function restrictNumber (e) {  
+												  var newValue = this.value.replace(new RegExp(/[^\d+\.\d{0,2}$]/,'ig'), "");
+												  this.value = newValue;
+													
+													document.getElementById("totalSummary").innerHTML = "RM "+Math.round(newValue * 100) / 100;
+												}
+										</script>
 										<div class="invalid-feedback">
 											Valid amount is required.
 										</div>
+
+										
 									
 									
 									
@@ -128,15 +167,6 @@ require_once "config.php";
 									
 									
 								</div>
-								<!--
-								<div class="col-md-6 mb-3">
-									<label for="lastName">Last name</label>
-									<input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-									<div class="invalid-feedback">
-										Valid last name is required.
-									</div>
-								</div>
--->
 							</div>
 
 							<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -149,6 +179,7 @@ require_once "config.php";
 								<div class="custom-control custom-radio">
 									<input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
 									<label class="custom-control-label" for="credit">Credit card</label>
+									
 								</div>
 								<div class="custom-control custom-radio">
 									<input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
@@ -170,12 +201,30 @@ require_once "config.php";
 									<div class="invalid-feedback">
 										Credit card number is required
 									</div>
+									<script>
+												var amount = document.querySelector('#cc-number');
+
+												amount.addEventListener('input', restrictNumber);
+												function restrictNumber (e) {  
+												  var newValue = this.value.replace(new RegExp(/[^\d]/,'ig'), "");
+												  this.value = newValue;
+												}
+										</script>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-3 mb-3">
 									<label for="cc-expiration">Expiration</label>
 									<input type="text" class="form-control" id="cc-expiration" placeholder="" required value="07/2025">
+									<script>
+												var amount = document.querySelector('#cc-expiration');
+
+												amount.addEventListener('input', restrictNumber);
+												function restrictNumber (e) {  
+												  var newValue = this.value.replace(new RegExp(/[^\d{2}+\/\d{4}$]/,'ig'), "");
+												  this.value = newValue;
+												}
+										</script>
 									<div class="invalid-feedback">
 										Expiration date required
 									</div>
@@ -183,6 +232,15 @@ require_once "config.php";
 								<div class="col-md-3 mb-3">
 									<label for="cc-expiration">CVV</label>
 									<input type="text" class="form-control" id="cc-cvv" placeholder="" required value="593">
+									<script>
+												var amount = document.querySelector('#cc-cvv');
+
+												amount.addEventListener('input', restrictNumber);
+												function restrictNumber (e) {  
+												  var newValue = this.value.replace(new RegExp(/[^\d{3}]/,'ig'), "");
+												  this.value = newValue;
+												}
+										</script>
 									<div class="invalid-feedback">
 										Security code required
 									</div>
@@ -190,8 +248,9 @@ require_once "config.php";
 							</div>
 							<hr class="mb-4">
 							
-							<button class="btn btn-primary btn-lg btn-block" onClick="myPayment()">Proceed Payment</button>
+							<button class="btn btn-primary btn-lg btn-block" name="proceedPayment" value="'.$merch_id.'" onClick="return confirm('Are you sure?')" >Proceed Payment</button>
 							
+<!--
 							<script>
 								function myPayment() {
 	
@@ -204,7 +263,9 @@ require_once "config.php";
 								}
 							
 							</script>
-						</form>
+-->
+						</form>	
+						
 					</div>
 				</div>
 			</div>

@@ -71,7 +71,7 @@ $user_id = $_SESSION['id'];
 							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
 							</li>';
 						
-						echo '	<li><a class="nav-link" href="logout.php"> 
+						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')"> 
 							 Log out <span class="fa fa-sign-out"></span></a>
 							</li>';
 						}

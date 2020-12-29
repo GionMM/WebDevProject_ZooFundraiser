@@ -11,14 +11,14 @@ if ( (isset( $_SESSION[ "loggedin" ] )) && ($_SESSION[ "loggedin" ] == true )) {
 
 require_once "config.php";
 ?>
-
 <?php
 $badchar = array( "~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "{", "}", "[", "]", "|", ";", "<", ">", "?", "`" );
 $badchar2 = array( "~", "!", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=", "{", "}", "[", "]", "|", ";", "<", ">", "?", "`" );
 
-$email = $name = $usertype = $password = $confirm_password = "";
-$email_err = $name_err = $usertype_err = $password_err = $confirm_password_err = "";
-
+$email = $name = $usertype = $password = $confirm_password = null;
+$email_err = $name_err = $usertype_err = $password_err = $confirm_password_err = null;
+?>
+<?php
 if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 
 	if ( empty( $_POST[ "email" ] ) ) {
@@ -116,7 +116,11 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 </head>
 
 <body>
-	<form class="form-signin" method="post" action="" validate>
+	
+
+	
+	
+	<form class="form-signin" method="post" name="myForm" onSubmit="validateForm()">
 		<div class="text-center mb-4">
 			<i class="fa fa-user-circle fa-5x"></i>
 			<h1 class="h3 mb-3 font-weight-normal">Register</h1>
@@ -124,21 +128,21 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 		</div>
 
 		<div class="form-label-group">
-			<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="required" value="<?php echo $email; ?>">
+			<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" value="<?php echo $email; ?>">
 			<label for="inputEmail">Email address</label>
 			<span class="help-block">
 				<?php echo $email_err; ?>
 			</span>
 		</div>
 		<div class="form-label-group">
-			<input type="text" id="inputName" name="name" class="form-control" placeholder="Name" required="required" value="<?php echo $name; ?>">
+			<input type="text" id="inputName" name="name" class="form-control" placeholder="Name"   value="<?php echo $name; ?>">
 			<label for="inputName">Full name</label>
 			<span class="help-block">
 				<?php echo $name_err; ?>
 			</span>
 		</div>
 		<div class="form-label-group">
-			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required" value="<?php echo $password; ?>">
+			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
 			<label for="inputPassword">Password</label>
 			<span class="help-block">
 				<?php echo $password_err; ?>
@@ -146,7 +150,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 		</div>
 
 		<div class="form-label-group">
-			<input type="password" id="inputRePassword" name="confirm_password" class="form-control" placeholder="Re-enter Password" required="required" value="<?php echo $confirm_password; ?>">
+			<input type="password" id="inputRePassword" name="confirm_password" class="form-control"  placeholder="Re-enter Password"  value="<?php echo $confirm_password; ?>">
 			<label for="inputRePassword">Re-enter password</label>
 			<span class="help-block">
 				<?php echo $confirm_password_err; ?>
@@ -158,6 +162,27 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 		</p>
 		<p class="mt-5 mb-3 text-muted text-center">Copyright © 2020-2021 Universiti Teknikal Malaysia Melaka. All rights reserved.</p>
 	</form>
+<!--
+		<script>
+				function validateForm() {
+				  	var x = document.forms["myForm"]["email"].value;
+					var y = document.forms["myForm"]["name"].value;
+					var z = document.forms["myForm"]["password"].value;
+					var a = document.forms["myForm"]["confirm_password"].value;
+					
+					 if (!y )  {
+					alert("All box must be filled out before submitting"+y);
+					return false;
+				  }
+//					else {
+//						return true;
+//					}
+//					
+	</script>
+-->
+
+	
+	
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../js/jquery-3.3.1.min.js"></script>
