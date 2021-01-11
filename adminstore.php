@@ -1,4 +1,7 @@
 <?php
+session_start();
+require_once "config.php";
+
 echo "<!doctype html>
 <html lang='en'>
   <head>
@@ -13,7 +16,7 @@ echo "<!doctype html>
     </style>
     </head><body>";
 
-require "connect.php";
+//require "connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +24,7 @@ require "connect.php";
   <head>
     <meta charset="utf-8">
     <title>
-      Admin Zoo Fundraiser Adoption
+      Admin Zoo Fundraiser Store
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -32,7 +35,7 @@ require "connect.php";
     <ul class="navigation">
       <li><a href="adminhome.php">Home</a></li>
       <li><a href="adminedit.php">Edit Admin</a></li>
-      <li><a href="admindonate.php">Edit Donation</a></li>
+      <li><a href="admindonate.php">View Donation</a></li>
       <li><a href="adminstore.php">Edit Store</a></li>
       <li><a href="adminadopt.php">Edit Animal Adoption</a></li>
       <li><a href="adminreport.php">Report</a></li>
@@ -65,7 +68,7 @@ require "connect.php";
 echo "<div class='row'>
 <div class='col-md-11 offset-md-1'>";
 
-if($stmt = $connect->query("SELECT * FROM merch")){
+if($stmt = $link->query("SELECT * FROM merch")){
 
   echo "Total of merchandise : ".$stmt->num_rows."<br>";
 
@@ -82,7 +85,7 @@ echo "<tr><td><img src=image/$row[merch_photo] class='img-thumbnail'</td>
   }
 echo "</table>";
 }else{
-echo $connect->error;
+echo $link->error;
 }
 echo "</div></div>";
 
