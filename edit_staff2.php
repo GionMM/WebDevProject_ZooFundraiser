@@ -1,8 +1,7 @@
 <?php
-//session_start();
-
-include 'connect.php';
-
+session_start();
+//include 'connect.php';
+require_once "config.php";
 //if(isset($_POST)& !empty($_POST))
 
 	$user_id= $_REQUEST['user_id'];
@@ -11,7 +10,7 @@ include 'connect.php';
     $fullname = $_REQUEST['fullname'];
 
 	$sql = "UPDATE user SET email= '$email',password='$password', fullname= '$fullname' WHERE user_id = '$user_id'";
-	$result = mysqli_query($connect,$sql);
+	$result = mysqli_query($link,$sql);
 	
 	if($result)
 	{
