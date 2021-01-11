@@ -43,7 +43,7 @@
 		
 				<tr>
 					<td>Price (RM)</td>
-					<Td><input class="form-control" type="number" value="<?php echo $rows['price'];?>"  name="price"/></td>
+					<Td><input class="form-control" type="number" value="<?php echo $rows['merch_price'];?>"  name="price"/></td>
 				</tr>
 				
 					</td>

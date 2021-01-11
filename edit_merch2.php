@@ -10,7 +10,7 @@ include 'connect.php';
     $merch_name = $_REQUEST['merch_name'];
     $price = $_REQUEST['price'];
 
-	$sql = "UPDATE merch SET merch_name= '$merch_name',price = '$price' WHERE merch_id = '$merch_id'";
+	$sql = "UPDATE merch SET merch_name= '$merch_name',merch_price = '$price' WHERE merch_id = '$merch_id'";
 	$result = mysqli_query($connect,$sql);
 	
 	if($result)
