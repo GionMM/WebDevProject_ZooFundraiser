@@ -86,7 +86,6 @@ echo $connect->error;
 }
 echo "</div></div>";
 
-//require "templates/bottom.php";	
 ?>
 
   </body>
