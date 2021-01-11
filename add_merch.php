@@ -17,10 +17,8 @@
     </ul>
     </ul>
 
-		<form action="add_merch2.php" method="post"  enctype="multipart/form-data">
+		<form action="add_merch2.php" method="post">
 
-
-<form>
     <div class="container">
     <h1>Add Merchandise</h1>
     <hr>
