@@ -29,7 +29,7 @@ if(isset($rows['user_id']))
 		?>
 		<script>
 			alert("Login successful!");
-		window.location.href = "adminedit.php";
+		window.location.href = "adminhome.php";
 	</script>
 	  <?php	
 		}
