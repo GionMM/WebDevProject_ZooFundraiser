@@ -1,6 +1,7 @@
 <?php 
 session_start();
-include ('connect.php');
+//include ('connect.php');
+require_once "config.php";
 //$user= $_SESSION['user_id'];
 
 ?>
@@ -22,7 +23,7 @@ include ('connect.php');
     <ul class="navigation">
       <li><a href="adminhome.php">Home</a></li>
       <li><a href="adminedit.php">Edit Admin</a></li>
-      <li><a href="admindonate.php">Edit Donation</a></li>
+      <li><a href="admindonate.php">View Donation</a></li>
       <li><a href="adminstore.php">Edit Store</a></li>
       <li><a href="adminadopt.php">Edit Animal Adoption</a></li>
       <li><a href="adminreport.php">Report</a></li>
@@ -67,7 +68,7 @@ include ('connect.php');
 	
 	$i=1;
 
-	$que=mysqli_query($connect,"SELECT * FROM user WHERE user_class ='1'");
+	$que=mysqli_query($link,"SELECT * FROM user WHERE user_class ='1'");
 
 	while($row=mysqli_fetch_array($que))
 	{
