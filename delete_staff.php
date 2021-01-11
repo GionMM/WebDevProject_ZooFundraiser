@@ -1,8 +1,9 @@
 <?php
-include('connect.php');
+require_once "config.php";
+//include('connect.php');
 	
 	$info=$_GET['user_id'];
 	
-	mysqli_query($connect,"delete from user where user_id='$info'");
+	mysqli_query($link,"delete from user where user_id='$info'");
 	header('location:adminedit.php?info=adminedit');
 ?>
