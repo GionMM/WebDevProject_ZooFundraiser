@@ -10,17 +10,17 @@
     <ul class="navigation">
     <li><a href="adminhome.php">Home</a></li>
       <li><a href="adminedit.php">Edit Admin</a></li>
-      <li><a href="admindonate.php">Edit Donation</a></li>
+      <li><a href="admindonate.php">View Donation</a></li>
       <li><a href="adminstore.php">Edit Store</a></li>
       <li><a href="adminadopt.php">Edit Animal Adoption</a></li>
       <li><a href="adminreport.php">Report</a></li>
     </ul>
     </ul>
 
-		<form action="add_staff2.php" method="post"  enctype="multipart/form-data">
+	<form action="add_staff2.php" method="post"  enctype="multipart/form-data">
 
 
-<form>
+
     <div class="container">
     <h1>Add Staff</h1>
     <hr>
@@ -35,10 +35,10 @@
     <input type="text" placeholder="Enter fullname" name="fullname" id="fullname" required><br></br>
 
     <button type="submit" class="addbtn">Add</button>
-  </div>
+	</div>
 
   
-</form>
+	</form>
 
 </body>
 </html>
