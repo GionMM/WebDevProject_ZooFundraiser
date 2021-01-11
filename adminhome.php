@@ -30,7 +30,7 @@ require_once "config.php";
     </ul>
 
         <div class="container">
-        <h1 style="font-size:50px;font-weight:bold">Welcome Back!</h1><br>
+        <h1 style="font-size:50px;font-weight:bold;text-shadow:1px 2px 3px grey">Dashboard</h1><br>
         <hr>
 		
 		<div class="card" style="margin-top:20px;width:35%;height:150px;box-shadow: 1px 2px 10px grey;display:inline-block">
