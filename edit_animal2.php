@@ -1,7 +1,7 @@
 <?php
-//session_start();
-
-include 'connect.php';
+session_start();
+require_once "config.php";
+//include 'connect.php';
 
 //if(isset($_POST)& !empty($_POST))
 
@@ -12,7 +12,7 @@ include 'connect.php';
     $annual_adoption_price = $_REQUEST['annual_adoption_price'];
 
 	$sql = "UPDATE animal SET animal_name= '$animal_name',animal_species='$animal_species', annual_adoption_price = '$annual_adoption_price' WHERE animal_id = '$animal_id'";
-	$result = mysqli_query($connect,$sql);
+	$result = mysqli_query($link,$sql);
 	
 	if($result)
 	{
