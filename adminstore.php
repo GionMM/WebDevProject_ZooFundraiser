@@ -1,8 +1,19 @@
-<?php 
-session_start();
-include ('connect.php');
-//$user= $_SESSION['user_id'];
+<?php
+echo "<!doctype html>
+<html lang='en'>
+  <head>
+    <!-- Required meta tags -->
 
+    <title>Displaying Images from database  </title>";
+    echo "<style>
+    .my_table > tbody > tr > td {
+    vertical-align: middle;
+    }
+    .my_table {width:500px;}
+    </style>
+    </head><body>";
+
+require "connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +27,6 @@ include ('connect.php');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  </head>
 
   <body>
     <ul class="navigation">
@@ -27,10 +37,10 @@ include ('connect.php');
       <li><a href="adminadopt.php">Edit Animal Adoption</a></li>
       <li><a href="adminreport.php">Report</a></li>
     </ul>
+
     <form>
         <div class="container">
-        <h1>List of Merchandise Available</h1><br>
-        <hr>
+        <h1>List of Merchandise Available</h1><hr>
 
         <p>Instruction: Press Update to update merchandise, Delete to delete merchandise, and Add to add merchandise. </p>
 
@@ -51,32 +61,32 @@ include ('connect.php');
 }
 </script>
 
-    <?php
+<?php
+echo "<div class='row'>
+<div class='col-md-11 offset-md-1'>";
+
+if($stmt = $connect->query("SELECT * FROM merch")){
+
+  echo "Total of merchandise : ".$stmt->num_rows."<br>";
 
 	echo "<table class='table table-responsive table-bordered table-striped table-hover' style=margin:15px;>";
-	echo "<tr>";
-	
-	//echo "<th>S.No</th>";
-	echo "<th class='text-center'>Merchandise Name</th>";
-    echo "<th class='text-center'>Price (RM)</th>";
-    echo "<th class='text-center'>Update</th>";
-	echo "<th class='text-center'>Delete</th>";
-	echo "</tr>";
-	
-	$i=1;
-	$que=mysqli_query($connect,"SELECT * FROM merch");
+  echo "<tr>";
 
-	while($row=mysqli_fetch_array($que))
-	{
-		echo "<tr>";
-		//echo "<td>".$i."</td>";
-		echo "<td class='text-center'>".$row['merch_name']."</td>";
-        echo "<td class='text-center'>".$row['merch_price']."</td>";
-		echo "<td class='text-center'><a href='edit_merch.php?merch_id=$row[merch_id]&info=edit_merch'><span class='glyphicon glyphicon-pencil'style=color:green;></span></a></td>";
-		echo "<td class='text-center'><a href='#' onclick='deletes($row[merch_id])'><span class='glyphicon glyphicon-trash' style=color:black;></span></a></td>";
-		//echo "<td class='text-center'><a href='dashboard.php?animal_id=$row[animal_id]&info=show_salon'><span class='fa fa-eye'style=color:black;></span></a></td>";
-	
+echo "<th>Image</th><th>Merchandise Name</th><th>Price</th><th>Update</th><th>Delete</th></tr>";
+while ($row = $stmt->fetch_assoc()) {
+echo "<tr><td><img src=image/$row[merch_photo] class='img-thumbnail'</td>
+<td><merch_id=$row[merch_id]>$row[merch_name]</td>
+<td>$row[merch_price]</td>
+<td class='text-center'><a href='edit_merch.php?merch_id=$row[merch_id]&info=edit_merch'><span class='glyphicon glyphicon-pencil'style=color:green;></span></a></td>
+<td class='text-center'><a href='#' onclick='deletes($row[merch_id])'><span class='glyphicon glyphicon-trash' style=color:black;></span></a></td></tr>";
+  }
+echo "</table>";
+}else{
+echo $connect->error;
 }
+echo "</div></div>";
+
+//require "templates/bottom.php";	
 ?>
 
   </body>
