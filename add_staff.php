@@ -34,9 +34,6 @@
     <label for="fullname"><b><br>Fullname</br></label>
     <input type="text" placeholder="Enter fullname" name="fullname" id="fullname" required><br></br>
 
-    <label for="user_class"><b><br>User Class</br></label>
-    <input type="text" placeholder="Enter user class" name="user_class" id="user_class" required><br></br>
-
     <button type="submit" class="addbtn">Add</button>
   </div>
 
