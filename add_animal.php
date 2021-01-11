@@ -19,7 +19,7 @@
 		<form action="add_animal2.php" method="post"  enctype="multipart/form-data">
 
 
-<form>
+<form action="add_animal2.php" method="POST">
     <div class="container">
     <h1>Add Animal</h1>
     <hr>
