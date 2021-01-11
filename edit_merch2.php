@@ -6,11 +6,11 @@ include 'connect.php';
 //if(isset($_POST)& !empty($_POST))
 
 	$merch_id= $_REQUEST['merch_id'];
-	//$user_id = $_REQUEST['user_id'];
-    $merch_name = $_REQUEST['merch_name'];
-    $price = $_REQUEST['price'];
+        $merch_name = $_REQUEST['merch_name'];
+	$merch_price = $_REQUEST['merch_price'];
+	$merch_photo = $_REQUEST['merch_photo'];
 
-	$sql = "UPDATE merch SET merch_name= '$merch_name',merch_price = '$price' WHERE merch_id = '$merch_id'";
+	$sql = "UPDATE merch SET merch_name= '$merch_name',merch_price = '$merch_price',merch_photo = '$merch_photo' WHERE merch_id = '$merch_id'";
 	$result = mysqli_query($connect,$sql);
 	
 	if($result)
