@@ -1,17 +1,18 @@
 <?php
-
-include 'connect.php';
+session_start();
+//include 'connect.php';
+require_once "config.php";
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 $fullname = $_POST['fullname'];
 	
-	if ($connect->connect_error) {
+	/*if ($connect->connect_error) {
 		die(" Connection failed: " . $connect->connect_error);
-	}
+	}*/
 
 	$sql = "SELECT email FROM user WHERE email='$email' ";
-	$result = $connect->query($sql);
+	$result = $link->query($sql);
 	$num_rows=mysqli_num_rows($result);
 	$row = $result->fetch_assoc();
 	
@@ -27,7 +28,7 @@ $fullname = $_POST['fullname'];
 	
 		$sql2 = "INSERT INTO user (email, password, fullname, user_class)
 		values ('$email','$password','$fullname',1)";
-		$result2 = mysqli_query($connect, $sql2);
+		$result2 = mysqli_query($link, $sql2);
 		
 		if($result2)
 		{
