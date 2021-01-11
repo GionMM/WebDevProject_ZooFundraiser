@@ -76,7 +76,7 @@ include ('connect.php');
 		echo "<tr>";
 		//echo "<td>".$i."</td>";
 		echo "<td class='text-center'>".$row['merch_name']."</td>";
-        echo "<td class='text-center'>".$row['price']."</td>";
+        echo "<td class='text-center'>".$row['merch_price']."</td>";
         echo "<td class='text-center'><a href='#' onclick='added($row[merch_id])'><span class='glyphicon glyphicon-shopping-cart' style=color:black;></span></a></td>";
         echo "<td class='text-center'><a href='#' onclick='purchase($row[merch_id])'>Purchase</a></td>";
 		//echo "<td class='text-center'><a href='dashboard.php?animal_id=$row[animal_id]&info=show_salon'><span class='fa fa-eye'style=color:black;></span></a></td>";
