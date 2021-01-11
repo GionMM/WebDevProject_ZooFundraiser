@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 
+<style>
+body {
+    background-color: bisque;
+    }
+    </style>
+
 <body>
     <ul class="navigation">
       <li><a href="adminhome.php">Home</a></li>
@@ -13,8 +19,6 @@
 
 <?php 
  	include 'connect.php';
- 	//include 'session.php';
- 	//$user_id = $_SESSION['user_id'];
  	$merch_id = $_REQUEST['merch_id'];
  	$sql = "SELECT * FROM merch WHERE merch_id ='$merch_id'";
 
@@ -43,7 +47,12 @@
 		
 				<tr>
 					<td>Price (RM)</td>
-					<Td><input class="form-control" type="number" value="<?php echo $rows['merch_price'];?>"  name="price"/></td>
+					<Td><input class="form-control" type="number" value="<?php echo $rows['merch_price'];?>"  name="merch_price"/></td>
+				</tr>
+
+				<tr>
+					<td>Merchandise Photo</td>
+					<Td><input class="form-control" type="file" value="<?php echo $rows['merch_photo'];?>"  name="merch_photo"/></td>
 				</tr>
 				
 					</td>
