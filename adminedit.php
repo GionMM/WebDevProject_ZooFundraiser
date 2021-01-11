@@ -59,7 +59,7 @@ include ('connect.php');
 	//echo "<th>S.No</th>";
 	echo "<th class='text-center'>Email</th>";
     echo "<th class='text-center'>Password</th>";
-    echo "<th class='text-center'>Fullname (RM)</th>";
+    echo "<th class='text-center'>Fullname</th>";
     echo "<th class='text-center'>Update</th>";
 	echo "<th class='text-center'>Delete</th>";
 
