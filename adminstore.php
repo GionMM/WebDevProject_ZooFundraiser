@@ -77,7 +77,8 @@ if($stmt = $link->query("SELECT * FROM merch")){
 
 echo "<th>Image</th><th>Merchandise Name</th><th>Price</th><th>Update</th><th>Delete</th></tr>";
 while ($row = $stmt->fetch_assoc()) {
-echo "<tr><td><img src=image/$row[merch_photo] class='img-thumbnail'</td>
+	$merch_photo = $row[ "merch_photo" ];
+echo "<tr><td><img class='card-img-top' src='data:image/jpeg;base64,".base64_encode($merch_photo)." alt='Card image cap'></td>
 <td><merch_id=$row[merch_id]>$row[merch_name]</td>
 <td>$row[merch_price]</td>
 <td class='text-center'><a href='edit_merch.php?merch_id=$row[merch_id]&info=edit_merch'><span class='glyphicon glyphicon-pencil'style=color:green;></span></a></td>
