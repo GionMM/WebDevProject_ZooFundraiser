@@ -5,10 +5,10 @@ require_once "config.php";
 
 //if(isset($_POST)& !empty($_POST))
 
-	$merch_id= $_REQUEST['merch_id'];
-    $merch_name = $_REQUEST['merch_name'];
-	$merch_price = $_REQUEST['merch_price'];
-	$merch_photo = $_REQUEST['merch_photo'];
+	$merch_id= $_POST['merch_id'];
+    $merch_name = $_POST['merch_name'];
+	$merch_price = $_POST['merch_price'];
+	$merch_photo = addslashes(file_get_contents($_FILES['merch_photo']['tmp_name']));
 
 	$sql = "UPDATE merch SET merch_name= '$merch_name',merch_price = '$merch_price',merch_photo = '$merch_photo' WHERE merch_id = '$merch_id'";
 	$result = mysqli_query($link,$sql);

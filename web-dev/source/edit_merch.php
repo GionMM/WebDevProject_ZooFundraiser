@@ -44,11 +44,10 @@ body {
  	$result = mysqli_query($link,$sql);
  	$rows = mysqli_fetch_array($result);
 ?>
-<form action="edit_merch2.php?merch_id=<?php echo $merch_id; ?>" method="get">
 
 <h2>Update Merchandise</h2>
 
-		<form method="post" enctype="multipart/form-data">
+		<form action="edit_merch2.php" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered">
 	<Tr>
 		<Td colspan="2"><?php echo @$err;?></Td>
