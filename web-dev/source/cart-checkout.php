@@ -51,6 +51,54 @@ require_once "config.php";
     }
     </style>
 </head>
+<?php 
+	if(isset($_POST['confirmPayment'])){
+		$user_id=$_SESSION['id'];
+		$fullName=mysqli_real_escape_string($link,$_POST['fullName']);
+		$phone=mysqli_real_escape_string($link,$_POST['phone']);
+		$address=mysqli_real_escape_string($link,$_POST['address']);
+		$total=$_POST['total'];
+		
+
+		if ($_POST['paymentMethod']==('credit'||'debit')){
+			$paymentMethod=1;
+		}
+
+		$query = "INSERT INTO `orders`(`order_id`, `user_id`, `payment_method`, `amount`, `datetime`, `delivery_address`) 
+		VALUES (NULL,$user_id,$paymentMethod,$total,CURRENT_TIMESTAMP(),'$address')";
+		mysqli_query($link, $query) or die("Insert Orders Failed");
+
+		$query="SELECT `order_id` FROM `orders` WHERE `user_id`=$user_id ORDER BY `datetime` DESC LIMIT 1";
+		$result = mysqli_query($link, $query) or die("Insert Orders Failed");
+		$row = mysqli_fetch_array($result);
+		$order_id=$row["order_id"];
+
+		$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
+		$result = mysqli_query($link, $query);
+
+		while ($row = mysqli_fetch_array($result)) {
+
+		  if ($result->num_rows > 0) {
+			  $merch_id 		= $row["merch_id"];
+			  $merch_name 	= $row["merch_name"];
+			  $merch_price 	= $row["merch_price"];
+			  $merch_photo 	= $row["merch_photo"];
+			  $quantity		= $row["quantity"];
+
+			  $query="INSERT INTO `orders_merch`(`order_id`, `merch_id`, `quantity`) VALUES ($order_id,$merch_id,$quantity)";
+			  mysqli_query($link, $query) or die("Insert Orders_Merch Failed");			
+		  }
+		}
+
+		$query="DELETE FROM `cart` WHERE `user_id`=$user_id";
+		mysqli_query($link, $query) or die("Clear Cart Failed");
+
+		mysqli_close($link);
+
+		header("location:store-home.php");
+		die();
+	}
+?>
 
 <body>
 
@@ -120,11 +168,11 @@ require_once "config.php";
                     <div class="col-md-8 order-md-1">
                         <h4 class="mb-3">Billing address</h4>
                         <!--						<form class="needs-validation" novalidate>-->
-                        <form>
+                        <form method="POST">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <label for="fullName">Full name</label>
-                                    <input type="text" class="form-control" id="fullName" placeholder="" value=""
+                                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="" value=""
                                         required>
                                     <div class="invalid-feedback">
                                         Valid full name is required.
@@ -143,7 +191,7 @@ require_once "config.php";
 
                             <div class="mb-3">
                                 <label for="phone">Phone number</label>
-                                <input type="text" class="form-control" id="phone" placeholder="" required>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="" required>
                                 <div class="invalid-feedback">
                                     Phone number required.
                                 </div>
@@ -151,7 +199,7 @@ require_once "config.php";
 
                             <div class="mb-3">
                                 <label for="address">Full Address</label>
-                                <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                                <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St"
                                     required>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
@@ -178,7 +226,9 @@ require_once "config.php";
                                 </div>
                             </div>
 
-                            <hr class="mb-4">
+								<input type="text" class="form-control" name="total" value="<?php echo $total;?>" hidden required>
+                            
+							<hr class="mb-4">
 
                             <h4 class="mb-3">Payment</h4>
 
@@ -236,20 +286,8 @@ require_once "config.php";
 
 
 
-                            <button class="btn btn-primary btn-lg btn-block" onClick="myPayment()">Proceed
+                            <button type="submit" name="confirmPayment" class="btn btn-primary btn-lg btn-block">Proceed
                                 Payment</button>
-
-                            <script>
-                            function myPayment() {
-
-                                if (confirm("Are you sure? You won't be able to go back to this page.")) {
-
-                                    window.location.href = 'done-payment.php';
-                                }
-
-                                return false;
-                            }
-                            </script>
 
 
                         </form>
