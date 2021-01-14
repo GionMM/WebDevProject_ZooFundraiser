@@ -139,23 +139,24 @@ require_once "config.php";
 										 $merch_photo 	= $row[ "merch_photo" ];
 										 $quantity		= $row[ "quantity" ];
 										 
-										echo '<div class="row" style="margin-top:0.5em;">
+										?> 
+										<div class="row" style="margin-top:0.5em;">
 								<div class="col-md-5">
 									<div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-										<img class="img-thumbnail" src="data:image/jpeg;base64,'.base64_encode($merch_photo).' alt="Sample">
+										<img class="img-thumbnail" src="data:image/jpeg;base64,<?php echo (base64_encode($merch_photo));?>">
 									</div>
 								</div>
 								<div class="col-md-7">
 									<div>
 										<div class="d-flex justify-content-between align-items-center">
 											<div>
-												<h5>'.$merch_name.'</h5>
-												<p class="mb-3 text-muted text-uppercase small">ID - '.$merch_id.'</p>
+												<h5><?php echo $merch_name;?></h5>
+												<p class="mb-3 text-muted text-uppercase small">ID - <?php echo $merch_id ?></p>
 	
 												<div class="input-group">
 												<form method="POST">
 													<input type="button" value="-" class="button-minus" data-field="quantity">
-													<input type="number" step="1" max="" value="'.$quantity.'" name="quantity" class="quantity-field">
+													<input type="number" step="1" max="" value="<?php echo $quantity; ?>" name="quantity" class="quantity-field">
 													<input type="button" value="+" class="button-plus" data-field="quantity">
 													</form>
 												</div>
@@ -173,7 +174,7 @@ require_once "config.php";
 										</div>
 									</div>
 								</div>
-							</div>';
+							</div>' <?php
 										 
 									 }
 								}
