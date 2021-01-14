@@ -161,7 +161,7 @@ require_once "config.php";
 														<button class="btn btn-danger" name="updateQuantity" type="submit">Remove Item</button>
 													</form>
 												</div>
-												<p class="mb-0"><span><strong><?php echo 'RM' . number_format(($merch_price * $quantity), 2, '.', ''); ?></strong></span>
+												<p class="mb-0"><span><strong><?php echo 'RM ' . number_format(($merch_price * $quantity), 2, '.', ''); ?></strong></span>
 												</p>
 											</div>
 										</div>
@@ -185,7 +185,7 @@ require_once "config.php";
 						<ul class="list-group mb-3">
 							<li class="list-group-item d-flex justify-content-between">
 								<span>Subtotal</span>
-								<strong><?php echo 'RM' . number_format($total, 2, '.', '') ?></strong>
+								<strong><?php echo 'RM ' . number_format($total, 2, '.', '') ?></strong>
 							</li>
 						</ul>
 
@@ -224,7 +224,7 @@ require_once "config.php";
 												<a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                         class="fas fa-trash-alt mr-1"></i> Remove item </a>
 											</div>
-											<p class="mb-0"><span><strong>RM 35.99</strong></span>
+											<p class="mb-0"><span><strong>RM  35.99</strong></span>
 											</p>
 										</div>
 									</div>
@@ -244,7 +244,7 @@ require_once "config.php";
 			</div>
 		<div class="container" style="margin-top: 2em">
 		<div class="input-group">
-			<a class="btn btn-primary btn-lg btn-block" type="submit" href="./cart-checkout.php">Continue to checkout</a>
+		<a href="cart-checkout.php" class="btn btn-primary btn-lg btn-block"> Continue to checkout </a>
 		</div>
 	</div>
 		</div>
