@@ -6,7 +6,7 @@ require_once "config.php";
 ?>
 <?php
 	if (isset($_POST['addToCart'])) {
-		
+		$user_id = $_SESSION['id'];
 		$merch_id = $_POST['addToCart'];
 		
 		
