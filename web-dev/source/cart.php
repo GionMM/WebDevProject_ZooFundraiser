@@ -1,18 +1,20 @@
 <?php
 session_start();
 
-if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] != true ) ) {
-	header( "location: main.php" );
+if ((isset($_SESSION["loggedin"])) && ($_SESSION["loggedin"] != true)) {
+	header("location: main.php");
 	exit;
 } else {
-	$user_id = $_SESSION[ 'id' ];
+	$user_id = $_SESSION['id'];
 }
 
 require_once "config.php";
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +31,7 @@ require_once "config.php";
 		body {
 			background-color: blueviolet;
 		}
-		
+
 		/* HIDE RADIO */
 		[type=radio] {
 			position: absolute;
@@ -37,21 +39,20 @@ require_once "config.php";
 			width: 0;
 			height: 0;
 		}
-		
+
 		/* IMAGE STYLES */
-		[type=radio]+ img {
+		[type=radio]+img {
 			cursor: pointer;
 		}
-		
+
 		/* CHECKED STYLES */
-		[type=radio]:checked+ img {
+		[type=radio]:checked+img {
 			outline: 2px solid #f00;
 		}
-		
+
 		div.card {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
-
 	</style>
 </head>
 
@@ -69,6 +70,17 @@ require_once "config.php";
 		</div>
 	</nav>
 
+	<?php
+	if (isset($_POST['updateQuantity'])) {
+		$user_id = $_SESSION['id'];
+		$merch_id = $_POST['merch_id'];
+		$quantity = $_POST['quantity'];
+
+		$sql = "UPDATE `cart` SET `quantity`= '$quantity' WHERE `user_id`='$user_id' AND `merch_id`='$merch_id' ";
+		mysqli_query($link, $sql) or die("Update Quantity Failed");
+	}
+	?>
+
 
 	<div class="container" style="margin-top: 2em">
 
@@ -77,16 +89,16 @@ require_once "config.php";
 				<div class="row">
 					<div class="col-md-4 order-md-2 mb-4">
 						<h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Order summary</span>
-<!--            <span class="badge badge-secondary badge-pill">3</span>-->
-          </h4>
-					
+							<span class="text-muted">Order summary</span>
+							<!--            <span class="badge badge-secondary badge-pill">3</span>-->
+						</h4>
+
 
 						<ul class="list-group mb-3">
 							<li class="list-group-item d-flex justify-content-between lh-condensed">
 								<div>
 									<span class="my-0">Subtotal</span>
-<!--									<small class="text-muted">Name: <i>Panda</i></small>-->
+									<!--									<small class="text-muted">Name: <i>Panda</i></small>-->
 
 								</div>
 								<span class="text-muted">MYR 0</span>
@@ -94,7 +106,7 @@ require_once "config.php";
 							<li class="list-group-item d-flex justify-content-between lh-condensed">
 								<div>
 									<span class="my-0">Shipping Fee</span>
-<!--									<small class="text-muted">Name: <i>Panda</i></small>-->
+									<!--									<small class="text-muted">Name: <i>Panda</i></small>-->
 
 								</div>
 								<span class="text-muted">MYR 7</span>
@@ -107,79 +119,80 @@ require_once "config.php";
 						</ul>
 
 					</div>
-					<?php 
-						$sqlCartQuantity = 'SELECT sum(quantity) FROM cart WHERE user_id="'.$user_id.'"';
-						
-						$resultCartQuantity = mysqli_query($link, $sqlCartQuantity);
-		 
-						 while($row = mysqli_fetch_array($resultCartQuantity)) {
+					<?php
+					$sqlCartQuantity = 'SELECT sum(quantity) FROM cart WHERE user_id="$user_id"';
 
-							 if ( $resultCartQuantity -> num_rows > 0) {
-								 
-								 	$cartQuantity		= $row[ "sum(quantity)" ];
-							 }
-						 }
+					$resultCartQuantity = mysqli_query($link, $sqlCartQuantity);
+
+					while ($row = mysqli_fetch_array($resultCartQuantity)) {
+
+						if ($resultCartQuantity->num_rows > 0) {
+
+							$cartQuantity		= $row["sum(quantity)"];
+						}
+					}
 					?>
 
 					<div class="col-md-8 order-md-1">
 						<h4 class="mb-3">Cart (<?php echo $cartQuantity; ?> items)</h4>
 
-						<form class="needs-validation" novalidate>
 
-							<?php 
-								$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='".$user_id."'";
-		 						$result = mysqli_query($link, $query);
-							
-								while($row = mysqli_fetch_array($result)) {
-			 
-									 if ( $result -> num_rows > 0) {
-										 $merch_id 		= $row[ "merch_id" ];
-										 $merch_name 	= $row[ "merch_name" ];
-										 $merch_price 	= $row[ "merch_price" ];
-										 $merch_photo 	= $row[ "merch_photo" ];
-										 $quantity		= $row[ "quantity" ];
-										 
-										?> 
-										<div class="row" style="margin-top:0.5em;">
-								<div class="col-md-5">
-									<div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-										<img class="img-thumbnail" src="data:image/jpeg;base64,<?php echo (base64_encode($merch_photo));?>">
-									</div>
-								</div>
-								<div class="col-md-7">
-									<div>
-										<div class="d-flex justify-content-between align-items-center">
-											<div>
-												<h5><?php echo $merch_name;?></h5>
-												<p class="mb-3 text-muted text-uppercase small">ID - <?php echo $merch_id ?></p>
-	
-												<div class="input-group">
-												<form method="POST">
-													<input type="button" value="-" class="button-minus" data-field="quantity">
-													<input type="number" step="1" max="" value="<?php echo $quantity; ?>" name="quantity" class="quantity-field">
-													<input type="button" value="+" class="button-plus" data-field="quantity">
-													</form>
-												</div>
-												
-												
-											</div>
-										</div>
-										<div class="d-flex justify-content-between align-items-center">
-											<div>
-												<a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                        class="fas fa-trash-alt mr-1"></i> Remove item </a>
-											</div>
-											<p class="mb-0"><span><strong>RM 35.99</strong></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>' <?php
-										 
-									 }
-								}
-							
+							<?php
+							$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
+							$result = mysqli_query($link, $query);
+
+							while ($row = mysqli_fetch_array($result)) {
+
+								if ($result->num_rows > 0) {
+									$merch_id 		= $row["merch_id"];
+									$merch_name 	= $row["merch_name"];
+									$merch_price 	= $row["merch_price"];
+									$merch_photo 	= $row["merch_photo"];
+									$quantity		= $row["quantity"];
+
 							?>
+									<div class="row" style="margin-top:0.5em;">
+										<div class="col-md-5">
+											<div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+												<img class="img-thumbnail" src="data:image/jpeg;base64,<?php echo (base64_encode($merch_photo)); ?>">
+											</div>
+										</div>
+										<div class="col-md-7">
+											<div>
+												<div class="d-flex justify-content-between align-items-center">
+													<div>
+														<h5><?php echo $merch_name; ?></h5>
+														<p class="mb-3 text-muted text-uppercase small">ID - <?php echo $merch_id ?></p>
+
+														<div class="input-group">
+															<form method="POST">
+																<input type="button" value="-" class="button-minus" data-field="quantity">
+																<input type="text" name="merch_id" value="<?php echo $merch_id; ?>" required hidden>
+																<input type="number" value="<?php echo $quantity; ?>" name="quantity" class="quantity-field" min="1" max="10" readonly>
+																<input type="button" value="+" class="button-plus" data-field="quantity">
+																<button class="btn btn-primary" name="updateQuantity" type="submit">Update Quantity</button>
+															</form>
+
+														</div>
+
+
+													</div>
+												</div>
+												<div class="d-flex justify-content-between align-items-center">
+													<div>
+														<a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i class="fas fa-trash-alt mr-1"></i> Remove item </a>
+													</div>
+													<p class="mb-0"><span><strong>RM 35.99</strong></span>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>' <?php
+
+										}
+									}
+
+											?>
 
 							<!--
 							<div class="row">
@@ -228,9 +241,7 @@ require_once "config.php";
 
 							<hr class="mb-4">
 
-							<a class="btn btn-primary btn-lg btn-block" type="submit" href="./cart-checkout.php">Continue to checkout</a>
 
-						</form>
 
 
 
@@ -254,4 +265,5 @@ require_once "config.php";
 	<script src="../js/bootstrap-4.3.1.js"></script>
 	<script src="../js/input-number.js"></script>
 </body>
+
 </html>
