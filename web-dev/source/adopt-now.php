@@ -3,13 +3,52 @@ if(!isset($_SESSION))
 { 
 	session_start(); 
 } 
-
 if ( (isset( $_SESSION[ "loggedin" ] )) && ($_SESSION[ "loggedin" ] != true )) {
 	header( "location: main.php" );
 	exit;
 }
 
 require_once "config.php";
+?>
+<?php
+	if (isset($_POST['proceedPayment'])) {
+		if ($_POST['paymentMethod']==('credit'||'debit')){
+			$paymentMethod=1;
+		}
+		
+		$user_id = $_SESSION['id'];
+		$date = date( 'Y-m-d H:i:s' );
+		$animal_species=$_POST['animalChoice'];
+
+		$sql="SELECT `animal_id` FROM animal WHERE `animal_species`LIKE '%$animal_species%' LIMIT 1";
+		$result=mysqli_query($link, $sql) or die('Retrieve Animal ID Failed');
+		
+		if(!empty($result)){
+			$row = mysqli_fetch_assoc($result);
+			$animal_id=$row['animal_id'];
+		}
+		else{
+			die('Retrieve Animal ID Failed');
+		}
+
+		$sqlDonation = "INSERT INTO adoption (user_id, payment_method, animal_id, datetime) VALUES ('$user_id', '$paymentMethod', '$animal_id', CURRENT_TIMESTAMP())";
+		
+			if(mysqli_query($link, $sqlDonation)or die("Insert into adoption failed"))
+			{
+				echo "<script>";
+				echo "window.location.href='done-payment.php'";
+				echo "</script>";
+			}
+			else
+			{
+				echo "<script>";
+				echo "alert('There's something wrong.);";
+				echo "</script>";
+			}
+
+		
+		}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -147,7 +186,7 @@ require_once "config.php";
 					<div class="col-md-8 order-md-1">
 						<h4 class="mb-3">Adoption applicant</h4>
 <!--						<form class="needs-validation" novalidate>-->
-						<form>
+						<form name="myForm" method="post">
 							<div class="row">
 								<div class="col-md-12 mb-3">
 									<label for="fullName">Full name</label>
@@ -192,7 +231,7 @@ require_once "config.php";
 										<img src="../images/panda2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="panda" name="animalChoice" type="radio" class="custom-control-input" required>
+											<input id="panda" value='panda' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="panda">Panda</label>
 										</div>
 
@@ -201,7 +240,7 @@ require_once "config.php";
 										<img src="../images/tiger2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="tiger" name="animalChoice" type="radio" class="custom-control-input" required>
+											<input id="tiger" value='tiger' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="tiger">Tiger</label>
 										</div>
 
@@ -210,7 +249,7 @@ require_once "config.php";
 										<img src="../images/leopard2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="leopard" name="animalChoice" type="radio" class="custom-control-input" required>
+											<input id="leopard" value='leopard' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="leopard">Leopard</label>
 										</div>
 
@@ -219,7 +258,7 @@ require_once "config.php";
 										<img src="../images/orangutan2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="orangUtan" name="animalChoice" type="radio" class="custom-control-input" required>
+											<input id="orangUtan" value='orang utan' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="orangUtan">Orang utan</label>
 										</div>
 
@@ -282,9 +321,9 @@ require_once "config.php";
 							</div>
 							<hr class="mb-4">
 							
-							<button class="btn btn-primary btn-lg btn-block" onClick="myPayment()">Proceed Payment</button>
+							<button class="btn btn-primary btn-lg btn-block" name="proceedPayment" type="submit" onClick="return confirm('Are you sure?')" >Proceed Payment</button>
 							
-							<script>
+							<!-- <script>
 								function myPayment() {
 	
 									if (confirm("Are you sure? You won't be able to go back to this page.")) {
@@ -295,7 +334,7 @@ require_once "config.php";
 									return false;
 								}
 							
-							</script>
+							</script> -->
 						</form>
 					</div>
 				</div>

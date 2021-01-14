@@ -21,7 +21,7 @@ require_once "config.php";
 		$date = date( 'Y-m-d H:i:s' );
 		
 		
-		$sqlDonation = "INSERT INTO donation (user_id, payment_method, amount, datetime) VALUES ('".$user_id."', '1', '".$totalSummary."', '".$date."')";
+		$sqlDonation = "INSERT INTO donation (user_id, payment_method, amount, datetime) VALUES ('".$user_id."', '1', '".$totalSummary."', CURRENT_TIMESTAMP())";
 		
 			if(mysqli_query($link, $sqlDonation))
 			{
