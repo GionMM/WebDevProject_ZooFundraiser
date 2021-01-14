@@ -161,7 +161,7 @@ require_once "config.php";
 														<button class="btn btn-primary" name="updateQuantity" type="submit">Update Quantity</button>
 													</form>
 												</div>
-												<p class="mb-0"><span><strong><?php  ?></strong></span>
+												<p class="mb-0"><span><strong><?php echo 'RM' . number_format(($merch_price * $quantity), 2, '.', ''); ?></strong></span>
 												</p>
 											</div>
 										</div>
@@ -189,7 +189,7 @@ require_once "config.php";
 									<!--									<small class="text-muted">Name: <i>Panda</i></small>-->
 
 								</div>
-								<span class="text-muted">MYR 0</span>
+								<span class="text-muted"><?php echo 'RM' . number_format($total, 2, '.', '') ?></span>
 							</li>
 							<li class="list-group-item d-flex justify-content-between lh-condensed">
 								<div>
@@ -207,6 +207,7 @@ require_once "config.php";
 						</ul>
 
 					</div>
+
 
 					<!--
 							<div class="row">
@@ -256,17 +257,16 @@ require_once "config.php";
 					<hr class="mb-4">
 
 
-
-
-
-
 				</div>
 			</div>
+		<div class="container" style="margin-top: 2em">
+		<div class="input-group">
+			<a class="btn btn-primary btn-lg btn-block" type="submit" href="./cart-checkout.php">Continue to checkout</a>
 		</div>
-
-
 	</div>
+		</div>
 	</div>
+	
 
 
 
