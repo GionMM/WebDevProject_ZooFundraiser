@@ -95,7 +95,7 @@ require_once "config.php";
 
 		mysqli_close($link);
 
-		header("location:store-home.php");
+		header("location:done-payment.php");
 		die();
 	}
 ?>
