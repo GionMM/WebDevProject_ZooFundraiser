@@ -158,7 +158,7 @@ require_once "config.php";
 													<form method="POST">
 														<input type="text" name="merch_id" value="<?php echo $merch_id; ?>" required hidden>
 														<input type="number" value="0" name="quantity" required hidden>
-														<button class="btn btn-primary" name="updateQuantity" type="submit">Update Quantity</button>
+														<button class="btn btn-danger" name="updateQuantity" type="submit">Remove Item</button>
 													</form>
 												</div>
 												<p class="mb-0"><span><strong><?php echo 'RM' . number_format(($merch_price * $quantity), 2, '.', ''); ?></strong></span>
@@ -183,26 +183,9 @@ require_once "config.php";
 
 
 						<ul class="list-group mb-3">
-							<li class="list-group-item d-flex justify-content-between lh-condensed">
-								<div>
-									<span class="my-0">Subtotal</span>
-									<!--									<small class="text-muted">Name: <i>Panda</i></small>-->
-
-								</div>
-								<span class="text-muted"><?php echo 'RM' . number_format($total, 2, '.', '') ?></span>
-							</li>
-							<li class="list-group-item d-flex justify-content-between lh-condensed">
-								<div>
-									<span class="my-0">Shipping Fee</span>
-									<!--									<small class="text-muted">Name: <i>Panda</i></small>-->
-
-								</div>
-								<span class="text-muted">MYR 7</span>
-							</li>
-
 							<li class="list-group-item d-flex justify-content-between">
-								<span>Total (RM)</span>
-								<strong>RM 30.99</strong>
+								<span>Subtotal</span>
+								<strong><?php echo 'RM' . number_format($total, 2, '.', '') ?></strong>
 							</li>
 						</ul>
 
