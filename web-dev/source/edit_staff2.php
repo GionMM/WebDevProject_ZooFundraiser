@@ -6,7 +6,7 @@ require_once "config.php";
 
 	$user_id= $_REQUEST['user_id'];
     $email = $_REQUEST['email'];
-    $password = $_REQUEST['password'];
+    $password = password_hash($_REQUEST['password'],PASSWORD_DEFAULT);
     $fullname = $_REQUEST['fullname'];
 
 	$sql = "UPDATE user SET email= '$email',password='$password', fullname= '$fullname' WHERE user_id = '$user_id'";
