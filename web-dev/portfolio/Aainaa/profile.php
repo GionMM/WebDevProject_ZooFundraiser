@@ -183,6 +183,48 @@
 			color: #fff!important;
 			background-color: lightsalmon !important
 		}
+		
+		/* vertical line */
+		.vl {
+			border-right: 6px solid lightsalmon;
+			height: 100px;
+		}
+		
+		/* rounded fa icon */
+		a.fa {
+			color: lightsalmon !important;
+		}
+		
+		i.fa-2x {
+			color: lightsalmon !important;
+		}
+		
+		/* form */
+		input[type=text],
+		select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+		
+		input[type=submit] {
+			width: 100%;
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
 
 	</style>
 </head>
@@ -201,6 +243,16 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+	
+
+
+
+
+
+
+
+
+
 
 		<div id="navbar-2" class="collapse navbar-collapse justify-content-md-center">
 			<ul class="navbar-nav">
@@ -214,16 +266,18 @@
 					<a class="nav-link" href="#skill">Skill</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#experience">Experiences</a>
+					<a class="nav-link" href="#experience">Projects</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#gallery">Gallery</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#contact">Contact</a>
 				</li>
 
 			</ul>
 		</div>
 	</nav>
-
-
-
-
 
 	<div class="container" style="margin-top: 2em; margin-bottom: 2em">
 		<div class="card shadow" style="width: 100%;">
@@ -325,35 +379,175 @@
 
 						<br>
 
-						<div class="row">
-							<div class="col-md-3">
-								<h5>CONTENT TITLE</h5>
-							</div>
-
-							<div class="col-md-9">
-
-							</div>
+						<div class="row" id="experience">
+							<h3><span class="headline">Projects</span></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur . Excepteur sint occaecat cupidatat non proident, sunt in .
+							</p>
 						</div>
 
 						<div class="row">
-							<div class="col-md-3">
-								<hr>
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-1">
+										<div class="vl"></div>
+									</div>
+									<div class="col-md-11">
+										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1">
+										<div class="vl"></div>
+									</div>
+									<div class="col-md-11">
+										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-1">
+										<div class="vl"></div>
+									</div>
+									<div class="col-md-11">
+										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1">
+										<div class="vl"></div>
+									</div>
+									<div class="col-md-11">
+										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+									</div>
+								</div>
 							</div>
 
-							<div class="col-md-9">
-								<hr>
-								<span style="height: 2px;"></span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur . Excepteur sint occaecat cupidatat non proident, sunt in .
-								</p>
-							</div>
 						</div>
 
+						<br>
+
+						<div class="row" id="gallery">
+							<h3><span class="headline">Gallery</span></h3>
+						</div>
+
+						<div class="row">
+							<div class="col-md-7">
+								<div class="row" style="margin-left:1em;">
+									<img src="gallery.jpg" style="width: 170px;">&nbsp;
+									<img src="gallery(1).jpg" style="width: 170px;">&nbsp;
+									<img src="gallery(2).jpg" style="width: 170px;">
+
+								</div>
+
+
+							</div>
+							<div class="col-md-5">
+								<iframe width="426" height="240" src="https://www.youtube.com/embed/NlIjz7NCxy4">
+								</iframe>
+
+								<audio controls="controls">
+									<source src="https://docs.google.com/uc?export=download&id=1DXPKe1v5QRHz5jOYCTwacCpNa0Dvz7YC">
+								</audio>
+
+							</div>
+
+						</div>
+
+						<br>
+
+						<div class="row" id="contact">
+							<h3><span class="headline">Contact</span></h3>
+						</div>
+
+						<div class="row">
+							<div class="col-md-5">
+								
+								<div class="row" style="margin-left:10px;">
+
+									<div class="col-md-3">
+										<b>Address</b>
+									</div>
+									<div class="col-md-9">
+										Taman Desa Saujana, Kajang, 43000
+									</div>
+									<br>
+									<div class="col-md-3">
+										<b>Email:</b>
+									</div>
+									<div class="col-md-9">
+										aainaa.nabila99@gmail.com
+									</div>
+									<br>
+									<div class="col-md-3">
+										<b>Phone:</b>
+									</div>
+									<div class="col-md-9">
+										(+60)13-206-6044
+									</div>
+								</div>
+								<br>
+								<div class="col-md-12">
+									<span class="fa-stack fa-lg">
+									  <a class="fa fa-circle-thin fa-stack-2x"></a>
+									  <a class="fa fa-twitter fa-stack-1x"></a>
+									</span>
+
+									<span class="fa-stack fa-lg">
+									  <a class="fa fa-circle-thin fa-stack-2x"></a>
+									  <a class="fa fa-facebook fa-stack-1x"></a>
+									</span>
+
+									<span class="fa-stack fa-lg">
+									  <a class="fa fa-circle-thin fa-stack-2x"></a>
+									  <a class="fa fa-instagram fa-stack-1x"></a>
+									</span>
+
+									<span class="fa-stack fa-lg">
+									  <a class="fa fa-circle-thin fa-stack-2x"></a>
+									  <a class="fa fa-github fa-stack-1x"></a>
+									</span>
+								
+
+
+
+
+								</div>
+
+
+							</div>
+							<div class="col-md-7">
+								<form>
+									<div class="row">
+										<input type="text" name="name" class="form-control" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+									</div>
+									<div class="row">
+										<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+									</div>
+									<div class="row">
+										<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+									</div>
+									<div class="row">
+										<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+									</div>
+									<div class="text-center">
+										<button  class="btn btn-primary" style="margin-top: 5px;background-color: lightsalmon;border: none;">Submit</button>
+									</div>
+									
+								</form>
+							</div>
+
+						</div>
 
 
 					</div>
-				</section>
+
 			</div>
 		</div>
+
+		</section>
+	</div>
+	</div>
 	</div>
 	<!--	script-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
