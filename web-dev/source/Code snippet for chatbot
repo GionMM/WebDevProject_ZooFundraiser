@@ -1,7 +1,0 @@
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-<df-messenger
-  intent="WELCOME"
-  chat-title="Zoologist"
-  agent-id="c6dd4878-8700-4f13-b806-275fcad3acc6"
-  language-code="en"
-></df-messenger>
