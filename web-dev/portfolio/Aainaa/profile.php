@@ -187,7 +187,7 @@
 		/* vertical line */
 		.vl {
 			border-right: 6px solid lightsalmon;
-			height: 100px;
+			height: 150px;
 		}
 		
 		/* rounded fa icon */
@@ -234,7 +234,7 @@
 	<div class="hero-image" id="home">
 		<div class="hero-text">
 			<h1 style="font-size:50px">Hey there!</h1>
-			<p>I'm Aainaa, a software developer from <i class="fa fa-map-marker"></i> Malaysia.</p>
+			<p>I'm Aainaa, a web designer and system developer from <i class="fa fa-map-marker"></i> Malaysia.</p>
 			<i class="fa fa-angle-down fa-3x"></i>
 		</div>
 	</div>
@@ -296,7 +296,7 @@
 								</div>
 								<!--								<hr>-->
 								<div class="row">
-									<p>I am an adept software developer, and have work with many projects. I am proficient with various programming language. My personal interest include: deep learning, data mining, and learn more about today innovation. Aside from software developing, I also have done various web designing projects.</p>
+									<p>I am an adept system developer, and have work with many projects. I am proficient with various programming language. My personal interest include: deep learning, data mining, and learn more about today innovation. Aside from software developing, I also have done various web designing projects.</p>
 								</div>
 								<div class="row">
 									<h5><span class="headline">Personal Information</span></h5>
@@ -341,7 +341,7 @@
 
 						<div class="row" id="skill">
 							<h3><span class="headline">Skill</span></h3>
-							<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+							<p class="col-md-12">Below are my professional skill sets for web designing and system programming. </p>
 
 						</div>
 
@@ -381,7 +381,7 @@
 
 						<div class="row" id="experience">
 							<h3><span class="headline">Projects</span></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur . Excepteur sint occaecat cupidatat non proident, sunt in .
+							<p class="col-md-12">These are all project that I've done in collaboration with my team members. We're extremely proud of each project that we done. The codes for these projects can be found on my Github page.
 							</p>
 						</div>
 
@@ -392,15 +392,20 @@
 										<div class="vl"></div>
 									</div>
 									<div class="col-md-11">
-										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+										<h5>Buffet Decision using Genetic Algorithm</h5> 
+										<small>2019-2020</small>
+										<p>Evolutionary algorithm is applied to the task of generating buffet menus based on time taken to finish food and get money's worth at the buffet.</p>
 									</div>
 								</div>
+								<br>
 								<div class="row">
 									<div class="col-md-1">
 										<div class="vl"></div>
 									</div>
 									<div class="col-md-11">
-										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+										<h5>Handwriten Text Recognition</h5> 
+										<small>2020-2021</small>
+										<p>A system for recognizing handwritten characters, including pre-processing apparatus for generating a set of features for each handwritten character.</p>
 									</div>
 								</div>
 							</div>
@@ -410,15 +415,20 @@
 										<div class="vl"></div>
 									</div>
 									<div class="col-md-11">
-										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+										<h5>Dvd Rental Management System</h5> 
+										<small>2018-2019</small>
+										<p>A simple management system develop using Java programming to keep track of a Dvd store transaction and user data.</p>
 									</div>
 								</div>
+								<br>
 								<div class="row">
 									<div class="col-md-1">
 										<div class="vl"></div>
 									</div>
 									<div class="col-md-11">
-										<h5>Title</h5> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat .
+										<h5>Text Summarisation Tool</h5>
+										<small>2020-2021</small>
+										<p>This summarising tool can condenses articles, papers, and other documents into a bulleted Key Sentences list or in a new paragraph.</p>
 									</div>
 								</div>
 							</div>
