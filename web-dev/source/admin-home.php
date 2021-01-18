@@ -31,7 +31,7 @@ require_once "config.php";
 		<a href="#about"><i class="fa fa-heart"></i>&emsp;Manage adoption</a>
 		<a href="adminstore.php"><i class="fa fa-shopping-bag"></i>&emsp;Manage store</a>
 		<a href="logout.php"><i class="fa fa-sign-out"></i>&emsp;Logout</a>
-		
+
 	</div>
 
 	<div class="content" >

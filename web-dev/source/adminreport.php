@@ -14,10 +14,15 @@ require_once "config.php";
       Admin Zoo Fundraiser Donation
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/sidebar.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- Bootstrap -->
+<!--	<link href="../css/bootstrap-4.3.1.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="../css/form-validation.css" rel="stylesheet">
+  <link href="../css/album.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -43,7 +48,7 @@ require_once "config.php";
  ]);
 
  var options = {
- title: 'Number of Students according to their class',
+ title: 'Number of Sales per month',
   pieHole: 0.5,
           pieSliceTextStyle: {
             color: 'black',
@@ -57,18 +62,24 @@ require_once "config.php";
   </head>
 
   <body>
-    <ul class="navigation">
-      <li><a href="adminhome.php">Home</a></li>
-      <li><a href="adminedit.php">Edit Admin</a></li>
-      <li><a href="admindonate.php">View Donation</a></li>
-      <li><a href="adminstore.php">Edit Store</a></li>
-      <li><a href="adminadopt.php">Edit Animal Adoption</a></li>
-      <li><a href="adminreport.php">Report</a></li>
-    </ul>
+    <div class="sidebar">
+  		<a style="text-align: center">Website logo</a>
+  		<hr>
 
-        <div class="container">
-        <h1>Report</h1><br>
-        <hr>
+  		<a class="active" href="admin-home.php"><i class="fa fa-tachometer"></i>&emsp;Dashboard</a>
+  		<a href="adminedit.php"><i class="fa fa-users"></i>&emsp;Manage staff</a>
+  		<a href="adminadopt.php"><i class="fa fa-paw"></i>&emsp;Manage animal</a>
+  		<a href="admindonate.php"><i class="fa fa-money"></i>&emsp;Manage donation</a>
+  		<a href="#about"><i class="fa fa-heart"></i>&emsp;Manage adoption</a>
+  		<a href="adminstore.php"><i class="fa fa-shopping-bag"></i>&emsp;Manage store</a>
+  		<a href="logout.php"><i class="fa fa-sign-out"></i>&emsp;Logout</a>
+
+  	</div>
+
+  	<div class="content" >
+  		<div style="margin-top: 2em;">
+  			<h1 style="font-size:50px;font-weight:bold;">Report</h1>
+  		</div>
 
         <p>Instruction: Choose the respective month you like to view the report.</p>
 	<form method="post">

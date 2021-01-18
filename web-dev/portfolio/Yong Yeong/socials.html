@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Business Website</title>
+    <link href="bio-layout.css" rel="stylesheet" type="text/css">
+
+    <!DOCTYPE HTML>
+<html>
+
+<style>
+#div1 {
+  color: white;
+  font-size: 20px;
+  float: center;
+  width: 100px;
+  height: 35px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  margin-top: 100px;
+  margin-left: 400px;
+}
+
+#div2
+{
+
+  width: 100px;
+  height: 35px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  margin-top: 30px;
+  margin-left: 400px;
+}
+
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+</html></head>
+<body>
+    <header>
+
+    <div class="row">
+        <div class="logo">
+        <img src="name.jpg"
+        </div>
+
+    <ul class="main-nav">
+        <li><a href="biography.html"> HOME </a></li>
+        <li><a href="biopage.html"> BIOGRAPHY </a></li>
+        <li class="active"><a href="socials.html"> SOCIALS </a></li>
+        <li><a href="content.html">CONTENT</a></li>
+        <li><a href="contactme.html"> CONTACT ME </a></li>
+
+    </ul>
+    </div>
+
+    <div class="hero">
+    <h1>Which one are you?</h1>
+
+
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="werk.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="100" height="40">
+    </div>
+
+    <p1>HARD</p1>
+
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
+    <p2>SMART</p2>
+    </div>
+
+
+    </header>
+
+  
+
+    </div>
+
+
+
+
+</body>
+</html>

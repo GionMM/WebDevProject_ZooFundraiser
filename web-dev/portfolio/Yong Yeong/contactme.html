@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Business Website</title>
+    <link href="bio-layout.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <script type="text/javascript">
+
+  </script>
+  <header>
+
+  <div class="row">
+      <div class="logo">
+      <img src="name.jpg"
+      </div>
+
+  <ul class="main-nav">
+      <li><a href="biography.html"> HOME </a></li>
+      <li><a href="biopage.html"> BIOGRAPHY </a></li>
+      <li><a href="socials.html"> SOCIALS </a></li>
+      <li><a href="content.html">CONTENT</a></li>
+      <li class="active"><a href="contactme.html"> CONTACT ME </a></li>
+
+  </ul>
+  </div>
+
+  <div class="hero">
+  <h1>Contact me</h1>
+
+
+  <p>Facebook: <a href="https://www.facebook.com/jason.yong.96558/">Jason Yong</a></p>
+  <p>Twitter: <a href="https://twitter.com/JasonYong7">JasonYong7</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/jasonyong99/?hl=en">jasonyong99</a></p>
+
+  <form action = "/cgi-bin/html5.cgi" method = "get">
+ Enter email : <input type = "email" name = "newinput" required />
+ Age : <input type = "number" min = "0" max = "100" step "1" name = "newinput" required />
+ Enter Social URL : <input type = "url" name = "newinput" required /><br>
+
+ <div class="buttonme">
+ <!--<input type = "submit" class="btn btn-one" value = "submit" />
+ -->
+
+
+ </div>
+
+ <button onclick="myFunction()"class="btn btn-one">Submit</button>
+
+
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var txt;
+  if (confirm("Are you sure of your submission?")) {
+    alert("Submission is done.");
+  } else {
+    alert("Submission is canceled.");
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+ </form>
+
+</header>
+
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Business Website</title>
+    <link href="bio-layout.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+
+    <div class="row">
+        <div class="logo">
+        <img src="name.jpg"
+        </div>
+
+    <ul class="main-nav">
+        <li class="active"><a href=""> HOME </a></li>
+        <li><a href=""> BIOGRAPHY </a></li>
+        <li><a href=""> SOCIALS </a></li>
+
+    </ul>
+    </div>
+
+    <div class="hero">
+    <h1>Name: Yong Yeong<br>Age: 21<br>University: University Teknikal Malaysia Melaka<br>Hobby: Futsak<br>Passion: Data Science and Machine Learning</h1>
+    <h2>"Time is non-refundable, Use it with intention"</h2>
+
+
+
+    </div>
+
+    </header>
+
+
+
+</body>
+</html>
