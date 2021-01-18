@@ -1,0 +1,241 @@
+<html>
+<head>
+<title>Gion</title>
+<link rel="stylesheet" href="profilestyle.css" type="text/css">
+
+<script type="text/javascript" src="external.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".button").hover(function(){
+		$(this).css({"background-color": "red", "color": "black"});}, function(){
+		$(this).css({"background-color": "royalblue", "color": "white"});
+	});
+	$(".animate").hover(function(){
+		$(this).animate({width:'+=30px', height:'+=30px',});}, function(){
+		$(this).animate({width:'-=30px', height:'-=30px',});
+	});
+});
+</script>
+</head>
+<body style="background-color:lavender">
+	<h1>
+	<svg height="110" width="200">
+	<defs>
+    <radialGradient id="gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:rgb(0,0,250);stop-opacity:0" />
+      <stop offset="100%" style="stop-color:rgb(150,0,100);stop-opacity:1" />
+    </radialGradient>
+	</defs>
+	<ellipse cx="80" cy="55" rx="75" ry="50" stroke="black" stroke-width="2" fill="url(#gradient)"/>
+	<text fill="ghostwhite" font-size="35" font-family="Verdana" x="20" y="65">MyBio</text>
+	Sorry, your browser does not support inline SVG.
+	</svg>
+	Welcome To My Profile!
+	<canvas id="Canvas3" style="height:70px;margin-left:20px;margin-bottom:15px"></canvas>
+	<script>
+	var c = document.getElementById("Canvas3");
+	var ctx = c.getContext("2d");
+	ctx.translate(100,75);
+	for(i=1; i<7; i++){
+	ctx.save();
+	ctx.fillStyle = 'rgb('+(81*i)+','+(200-21*i)+',0)';
+	for(j=0; j < i*6; j++){
+	ctx.rotate(Math.PI*2/(i*6));
+	ctx.beginPath();
+	ctx.arc(0,i*12.5,5,0,Math.PI*2,true);
+	ctx.fill();
+	}
+	ctx.restore();
+	}
+	</script>
+	</h1>
+	<hr style="height:3px; background-color:purple"></hr>
+	<h2>A Brief Self Introduction</h2>
+	<img id="mypic" src="../../images/Gion.jpg" alt="My Picture" width="150" height="150"/>
+	<p id="p1">
+	<b style="font-size: 20px;">Hi!</b> Here is a third year student of Faculty of Information and Communication Technology (FICT) in Universiti Teknikal Malaysia Melaka.
+	I'm studying under the Artificial Intelligence (AI) course in FICT. Currently studying about the Web Application Development. I have develop a website together with my group members, you may visit to <a href="../../source/main.php" style="color: blue;font-weight: bold;">here</a> if you're interested.
+	</p>
+	<div class="table">
+	<h4>Some details about me...</h4>
+	<table>
+	<tr>
+		<th>Name</th>
+		<td>Gion Min Ming</td>
+	</tr>
+	<tr>
+		<th>Age</th>
+		<td>22</td>
+	</tr>
+	<tr>
+		<th>Gender</th>
+		<td>Female</td>
+	</tr>
+	<tr>
+		<th>Birthday</th>
+		<td>18th December 1998</td>
+	</tr>
+	<tr>
+		<th>Hometown</th>
+		<td>Melaka</td>
+	</tr>
+	<tr>
+		<th>Phone Number</th>
+		<td>011-10985817</td>
+	</tr>
+	<tr>
+		<th>Email</th>
+		<td>cocogion1@gmail.com</td>
+	</tr>
+	<tr>
+		<th>Hobbies</th>
+		<td>Reading novel and watching anime</td>
+	</tr>
+	</table>
+	<canvas id="Canvas1" style="margin:0px 180px;height:150px;width:250px"></canvas>
+	<script>
+	var c = document.getElementById("Canvas1");
+	var ctx = c.getContext("2d");
+	ctx.font = "60px Arial";
+	ctx.shadowOffsetX = 3;
+	ctx.shadowOffsetY = 5;
+	ctx.shadowBlur = 2;
+	ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+	ctx.strokeText("Welcome!", 10, 50);
+	</script>
+	<canvas id="Canvas2" style="width:200px;height:100px;float:right"></canvas>
+	<script type="text/javascript">
+	var canvas = document.getElementById("Canvas2");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(75,25);
+	ctx.quadraticCurveTo(25,25,25,62.5);
+	ctx.quadraticCurveTo(25,100,50,100);
+	ctx.quadraticCurveTo(50,120,30,125);
+	ctx.quadraticCurveTo(60,120,65,100);
+	ctx.quadraticCurveTo(125,100,125,62.5);
+	ctx.quadraticCurveTo(125,25,75,25);
+	ctx.shadowOffsetX = 3;
+	ctx.shadowOffsetY = 5;
+	ctx.shadowBlur = 2;
+	ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+	ctx.stroke();
+	</script>
+	</div>
+	<h4 id="more">To know more about me...</h4>
+	<div class="d1">
+	<h5>Programming Languages I have learnt before:</h5>
+	<ul style="margin: 0px 40px; list-style-type:square">
+	<li>C++</li>
+	<li>PHP</li>
+	<li>HTML</li>
+	<li>Java</li>
+	<li>Python</li>
+	<li>R</li>
+	<li>CLIPS</li>
+	<li>Prolog</li>
+	<li>SQL</li>
+	<li>Dart</li>
+	<ul>
+	</div>
+	<div class="d5">
+		<h5>Projects that I have done before:</h5>
+		<ul style="margin: 0px 40px; list-style-type: disc;">
+		<li style="font-size: 20px; font-weight: bold;">Chatbot about Makeup Knowledge</li>
+		<p>A chatbot bulit by using Pandorabot which will answer the questions of user about the knowledge in makeup.</p>
+		<li style="font-size: 20px; font-weight: bold;">DVD Rental Management System</li>
+		<p>A management system created by using Java programming language which can help to manage the rental record of the DVD store.</p>
+		<li style="font-size: 20px; font-weight: bold;">Meal Planner</li>
+		<p>A system developed by using Genetic Algorithm, it can help user to control or plan their daily meals by suggest the most suitable plan of meal to user according to user's requirements.</p>
+		<li style="font-size: 20px; font-weight: bold;">Movie Recommendation System</li>
+		<p>A knowledge based system made by using rule-based, it is a simple system which can recommend the movie that might be the most suitable for the user at the specific time.</p>
+		<li style="font-size: 20px; font-weight: bold;">SightWalk Application</li>
+		<p>A mobile application built by using Dart programming language and Flutter framework, it is created to help the visually impaired community to carry out their daily activities independently.</p>
+		<ul>
+		</div>
+	<div class="d2">
+	<h5>And...I'm a fan of anime!</h5>
+	<h6>Below are some of my favourite anime:<h6>
+	<img id="anime1" class="animate" src="KHR.jpg" alt="Katekyo Hitman Reborn" width="200" height="210"/>
+	<img id="anime2" class="animate" src="PsychoPass.jpg" alt="Psycho Pass" width="250" height="210"/>
+	<img id="anime3" class="animate" src="BSD.png" alt="Bungou Stray Dogs" width="200" height="210"/>
+	<p id="p2">Katekyo Hitman Reborn</p>
+	<p id="p3">Psycho Pass</p>
+	<p id="p4">Bungou Stray Dogs</p>
+	<br><br>
+	<h6>Here is one of my favourite anime song:<h6>
+	<p id="p5">Katekyo Hitman Reborn 15th Ending Song<br>Famiglia - by D-51</p>
+	<audio src="KHR-ED15_Famiglia_By_D-51.mp3" controls autoplay>
+	Your browser does not support the &lt;audio&gt; element.
+	</audio>
+	<br><br>
+	<h6>Just for fun, here is a remix video of anime, feel free to watch it~<h6>
+	<video src="Anime_Mix_AMV.mp4" width="300" height="200" controls>
+	Your browser does not support the &lt;video&gt; element.
+	</video>
+	<br><br><br><br>
+	<form>
+	Here are some of the website you may visit if you are interesting to know more about anime:
+	<select name = " SiteSelector" size = "1" onChange="Site(this.value)" style = "border-radius:5px;width:150px;height:20px">
+	<option value = ""></option>
+	<option value = "https://myanimelist.net/"> My Anime List </option>
+	<option value = "https://www.animelab.com/home"> Anime Lab </option>
+	<option value = "https://www.fandom.com/topics/anime"> Fandom(Anime) </option>
+	<option value = "https://www.crunchyroll.com/"> Crunchyroll </option>
+	</select>
+	</form>
+	<br>
+	<form action="/cgi-bin/html5.cgi" method="get">
+	Do you have any other recommendation about anime? You may give the URL of the website here: 
+	<input type="url" name="newinput" required style="border-radius:5px"/>
+	<input type="submit" value="submit" class="button" style="border-radius:5px;font-weight:bold;background-color:royalblue;color:white"/>
+	</form>
+	</div>
+	<div class="d3">
+	<h5>If you have interest to chat more with me, you may left your email here:</h5>
+	<form action="/cgi-bin/html5.cgi" method="get" class="f1">
+	<input type="button" value="Click here!" onClick="sendEmail();" class="button" style="border-radius:5px;font-weight:bold;background-color:royalblue;color:white;padding:10px"/>
+	<!--Enter email :
+	<input type="email" name="newinput" required style="border-radius:5px"/>
+	<input type="submit" value="send" style="border-radius:5px;font-weight:bold;background-color:royalblue;color:white"/>-->
+	</form>
+	<h6 style="margin-top:30px; margin-bottom:0px">Kindly give your feedback about my biography at here also, thank you~</h6>
+	<form action="/cgi-bin/html5.cgi" method="get" class="f2">
+	Please select your impression marks about this biography from number 1 - 10 :
+	<br><br>
+	<input type="number" min="0" max="10" step "1" name="newinput" required style="border-radius:3px"/>
+	<br><br>
+	You can give your comments here if you have any suggestions for me to improve this biography:
+	<br><br>
+	<textarea name="comment" rows="10" cols="50" style="height:100px;border-radius:3px"></textarea>
+	<br><br>
+	<input type="submit" value="submit" class="button" style="border-radius:5px;font-weight:bold;background-color:royalblue;color:white"/>
+	</form>
+	</div>
+	<div class="d4">
+	<svg id="svgelem" height="220" width="900" xmlns="http://www.w3.org/2000/svg" style="display:block; margin-bottom:50px">
+	<circle id="dot" cx="120" cy="110" r="105" stroke="thistle" stroke-width="3" fill="lightyellow"/>
+	<text fill="violet" font-size="30" font-weight="bold" font-family="Verdana" x="80" y="85">Little</text>
+	<text fill="navy" font-size="30" font-weight="bold" font-family="Verdana" x="250" y="85">Just for fun! Try to drag and drop the</text>
+	<text fill="violet" font-size="30" font-weight="bold" font-family="Verdana" x="18" y="140">Playground!</text>
+	<text fill="navy" font-size="30" font-weight="bold" font-family="Verdana" x="250" y="140">shape below if you are boring.</text>
+	</svg>
+	<div id="box1" draggable="true" ondragstart="drag(event)">
+	<p>Cake</p>
+	</div>
+	<div id="circle1" draggable="true" ondragstart="drag(event)">
+	<p>Door</p>
+	</div>
+	<div id="box2" draggable="true" ondragstart="drag(event)">
+	<p>Pen</p>
+	</div>
+	<div id="circle2" draggable="true" ondragstart="drag(event)">
+	<p>Sky</p>
+	</div>
+	<div id="dropbox" class="dbox1" ondrop="drop(event)" ondragover="allowDrop(event)">Green</div>
+	<div id="dropbox" class="dbox2" ondrop="drop(event)" ondragover="allowDrop(event)">Orange</div>
+	<div id="dropbox" class="dbox3" ondrop="drop(event)" ondragover="allowDrop(event)">Blue</div>
+	</div>
+</body>
+</html>

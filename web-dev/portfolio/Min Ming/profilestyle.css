@@ -1,0 +1,199 @@
+h1{
+	color: orange;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 80px;
+	margin: 10px 0px 20px 20px;
+	text-shadow: 4px 3px 5px black;
+}
+h2{
+	color: brown;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 40px;
+	margin: 10px 0px 20px 20px;
+	text-shadow: 2px 2px 3px black;
+}
+h4{
+	margin:0px 0px 20px;
+	font-size:30px;
+	color:indigo;
+	text-shadow: 1px 1px 2px grey;
+}
+h5{
+	margin:0px 30px 20px;
+	font-size:20px;
+	color:navy;
+	text-shadow: 1px 1px 2px grey;
+}
+h6{
+	margin:0px 30px 20px;
+	font-size:15px;
+	color:black;
+}
+table, th, td{
+	border: 2px solid orange;
+	border-collapse: collapse;
+	text-align: left;
+	background-color: lightyellow;
+}
+table{
+	display: inline-block;
+	box-shadow: 5px 5px 2px grey;
+}
+tr{
+	height: 35px;
+	font-size: 15px;
+}
+#mypic{
+	border: 5px solid grey;
+	margin: 20px 80px 50px;
+	box-shadow: 5px 5px 6px grey;
+	float: left;
+	display: inline-block;
+}
+#p1{
+	margin: 30px 100px 50px;
+	width: 600px;
+	display: inline-block;
+	background-color: mistyrose;
+	padding: 35px;
+	box-shadow: 2px 3px 3px grey;
+}
+.table{
+	width: 1000px;
+	margin: 30px 20px 50px;
+}
+.d1{
+	margin: 10px 30px 10px;
+	padding: 15px;
+	background-color: lemonchiffon;
+}
+.d2{
+	margin: 10px 30px 10px;
+	padding: 15px;
+	background-color: ivory;
+}
+.d3{
+	margin: 10px 30px 10px;
+	padding: 15px;
+	background-color: lavenderblush;
+}
+.d4{
+	margin: 10px 30px 10px;
+	padding: 15px;
+	background-color: mistyrose;
+	height: 500px;
+}
+.d5{
+	margin: 10px 30px 10px;
+	padding: 15px;
+	background-color: cornsilk;
+}
+.f1{
+	margin: 10px 15px 10px;
+	padding: 15px;
+}
+.f2{
+	margin: 10px 15px 10px;
+	padding: 15px;
+	background-color: seashell;
+}
+#more{
+	margin: 0px 20px 20px;
+}
+li{
+	margin: 0px 10px 10px;
+}
+#anime1{
+	border: 2px solid purple;
+	margin: 20px 20px 50px;
+	box-shadow: 5px 5px 6px grey;
+	display: inline-block;
+}
+#anime2{
+	border: 2px solid purple;
+	margin: 20px 120px 50px;
+	box-shadow: 5px 5px 6px grey;
+	display: inline-block;
+}
+#anime3{
+	border: 2px solid purple;
+	margin: 20px 50px 50px;
+	box-shadow: 5px 5px 6px grey;
+	display: inline-block;
+}
+#p2{
+	margin: 0px 50px 10px 30px;
+	display: inline-block;
+}
+#p3{
+	margin: 0px 50px 10px 220px;
+	display: inline-block;
+}
+#p4{
+	margin: 0px 20px 10px 250px;
+	display: inline-block;
+}
+#p5{
+	margin-left: 10px;
+	font-size: 12px;
+	color: darkblue;
+}
+#circle1, #circle2, #box1, #box2, #dropbox{
+	float: left;
+	padding: 10px;
+	margin: 10px;
+	-moz-user-select: none;
+	}
+#circle1{
+	background-color: gold;
+	width: 75px;
+	height: 75px;
+	border-radius: 50px;
+	font-weight: bold;
+	text-align: center;
+	}
+#circle2{
+	background-color: teal; 
+	width: 75px; 
+	height: 75px; 
+	border-radius: 50px; 
+	font-weight: bold; 
+	text-align: center;
+	}
+#box1{
+	width: 75px; 
+	height: 75px; 
+	background-color: sandybrown; 
+	font-weight: bold; 
+	text-align: center;
+	}
+#box2{
+	width: 75px; 
+	height: 75px; 
+	background-color: mediumpurple; 
+	font-weight: bold; 
+	text-align: center;
+	}
+#dropbox{
+	width: 150px; 
+	height: 150px; 
+	float: right;
+	}
+.dbox1{
+	background-color: palegreen; 
+	font-size: 20px; 
+	font-weight: bold; 
+	text-align: center;
+	}
+.dbox2{
+	background-color: coral; 
+	font-size: 20px; 
+	font-weight: bold; 
+	text-align: center;
+	}
+.dbox3{
+	background-color: lightskyblue; 
+	font-size: 20px; 
+	font-weight: bold; 
+	text-align: center;
+	}
