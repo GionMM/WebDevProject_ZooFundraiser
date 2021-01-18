@@ -198,7 +198,7 @@ for (i = 0; i < dropdown.length; i++) {
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/janson.png" data-holder-rendered="true">
 					<h6>Janson</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Janson/index.html"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
@@ -247,7 +247,7 @@ for (i = 0; i < dropdown.length; i++) {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="./register.php" title="">Donate now!</a> </div>
+					<div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="./donation.php" title="">Donate now!</a> </div>
 				</div>
 			</div>
 		</div>';
