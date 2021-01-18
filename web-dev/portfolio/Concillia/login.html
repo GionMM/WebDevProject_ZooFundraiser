@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <style>
+         body {
+            background-image: url("login.jpg");
+         }
+
+        #div1 {
+          width: 100px;
+          height: 100px;
+          padding: 10px;
+          border: 1px solid #aaaaaa;
+        }
+
+        #test {
+    width: 300px;
+    height:90px;
+    margin: 0px auto;
+    }  
+    </style>
+    
+    <script type="text/javascript">
+        function drawShape(){
+        // get the canvas element using the DOM
+        var canvas = document.getElementById('mycanvas');
+        // Make sure we don't execute when canvas isn't supported
+        if (canvas.getContext){
+        // use getContext to use the canvas for drawing
+        var ctx = canvas.getContext('2d');
+        // Draw shapes
+        ctx.beginPath();
+        ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
+        ctx.moveTo(110,75);
+        ctx.arc(75,75,35,0,Math.PI,false); // Mouth
+ctx.moveTo(65,65);
+ctx.arc(60,65,5,0,Math.PI*2,true); // Left eye
+ctx.moveTo(95,65);
+ctx.arc(90,65,5,0,Math.PI*2,true); // Right eye
+ctx.stroke();
+}
+else {
+alert('You need Safari or Firefox 1.5+ to see this demo.');
+}
+}
+</script>
+</head>
+<body id="test" onload="drawShape();">
+<canvas id="mycanvas"></canvas>
+
+        <svg height="170" width="400">
+           <defs>
+              <radialGradient id="lgrad" x1="0%" y1="0%" x2="70%" y2="0%">
+                 <stop offset="0%"
+                 style="stop-color:rgb(62, 139, 211);stop-opacity:1" />
+                 <stop offset="50%"
+                 style="stop-color:rgb(74, 50, 170);stop-opacity:1" />
+                 <stop offset="100%"
+                 style="stop-color:rgb(9, 157, 191);stop-opacity:1" />
+              </radialGradient>
+           </defs>
+           <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#lgrad)" />
+           <text fill="rgb(241,241,241)" font-size="40" font-family="Gentium Book Basic"
+              x="40" y="86">MyBio</text>
+        </svg>
+     </body>
+<form action="concillia.html" method="get">
+ Email : <input type="email" name="newinput" placeholder="email@example.com" required/>
+ <p> Please fill in the form.</p>
+<input type="submit" value="Login" />
+</form>
+</body>
+</html>
