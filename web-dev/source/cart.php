@@ -93,7 +93,9 @@ require_once "config.php";
                     <?php 
 						$sqlCartQuantity = 'SELECT sum(quantity) FROM cart WHERE user_id="'.$user_id.'"';
 						
-						$resultCartQuantity = mysqli_query($link, $sqlCartQuantity);
+                        $resultCartQuantity = mysqli_query($link, $sqlCartQuantity);
+                        
+                        $total=0;
 		 
 						 while($row = mysqli_fetch_array($resultCartQuantity)) {
 
@@ -101,7 +103,7 @@ require_once "config.php";
 								 
 								 	$cartQuantity		= $row[ "sum(quantity)" ];
 							 }
-						 }
+                            }
 					?>
 
                     <div class="col-md-8 order-md-1">
@@ -245,8 +247,14 @@ require_once "config.php";
 				</div>
 				<div class="container" style="margin-top: 2em">
 		<div class="input-group">
+            <?php if ($total>0){ ?>
 		<a href="cart-checkout.php" class="btn btn-primary btn-lg btn-block"> Continue to checkout </a>
-            </div>
+                <?php } else{
+                ?>
+                   <button type="button" class="btn btn-primary btn-lg btn-block" disabled>Continue to checkout</button> 
+                <?php  
+                }?>
+    </div>
         </div>
     </div>
     </div>
