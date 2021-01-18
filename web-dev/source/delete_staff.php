@@ -1,6 +1,6 @@
 <?php
 require_once "config.php";
-//include('admin/connect.php');
+//include('connect.php');
 	
 	$info=$_GET['user_id'];
 	

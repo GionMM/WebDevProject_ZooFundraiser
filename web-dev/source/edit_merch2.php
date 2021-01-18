@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "config.php";
-//include 'admin/connect.php';
+//include 'connect.php';
 
 //if(isset($_POST)& !empty($_POST))
 

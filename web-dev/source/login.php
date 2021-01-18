@@ -73,7 +73,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 									$_SESSION[ "email" ] = $email;
 									$_SESSION[ "user_class" ] = $fetch['user_class'];
 								
-									header("location: main.php");		  
+									header("location: adminhome.php");		  
 								}
 								
 								else if($fetch['user_class'] == '0')
@@ -119,20 +119,20 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 ?>
 
 <!doctype html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Homepage</title>
+	<title>Login page</title>
 	<!-- Bootstrap -->
-	<link href="../css/bootstrap-4.3.1.css" rel="stylesheet">
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/floating-labels.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
-		html {
-			scroll-behavior: smooth;
+		.help-block {
+			color: red;
 		}
-
 	</style>
 </head>
 

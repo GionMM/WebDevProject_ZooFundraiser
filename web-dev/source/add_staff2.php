@@ -1,6 +1,6 @@
 <?php
 session_start();
-//include 'admin/connect.php';
+//include 'connect.php';
 require_once "config.php";
 
 $email = $_POST['email'];

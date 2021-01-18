@@ -3,13 +3,52 @@ if(!isset($_SESSION))
 { 
 	session_start(); 
 } 
-
 if ( (isset( $_SESSION[ "loggedin" ] )) && ($_SESSION[ "loggedin" ] != true )) {
 	header( "location: main.php" );
 	exit;
 }
 
 require_once "config.php";
+?>
+<?php
+	if (isset($_POST['proceedPayment'])) {
+		if ($_POST['paymentMethod']==('credit'||'debit')){
+			$paymentMethod=1;
+		}
+		
+		$user_id = $_SESSION['id'];
+		$date = date( 'Y-m-d H:i:s' );
+		$animal_species=$_POST['animalChoice'];
+
+		$sql="SELECT `animal_id` FROM animal WHERE `animal_species`LIKE '%$animal_species%' LIMIT 1";
+		$result=mysqli_query($link, $sql) or die('Retrieve Animal ID Failed');
+		
+		if(!empty($result)){
+			$row = mysqli_fetch_assoc($result);
+			$animal_id=$row['animal_id'];
+		}
+		else{
+			die('Retrieve Animal ID Failed');
+		}
+
+		$sqlDonation = "INSERT INTO adoption (user_id, payment_method, animal_id, datetime) VALUES ('$user_id', '$paymentMethod', '$animal_id', CURRENT_TIMESTAMP())";
+		
+			if(mysqli_query($link, $sqlDonation)or die("Insert into adoption failed"))
+			{
+				echo "<script>";
+				echo "window.location.href='done-payment.php'";
+				echo "</script>";
+			}
+			else
+			{
+				echo "<script>";
+				echo "alert('There's something wrong.);";
+				echo "</script>";
+			}
+
+		
+		}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,29 +133,60 @@ require_once "config.php";
             <span class="text-muted">Order summary</span>
 <!--            <span class="badge badge-secondary badge-pill">3</span>-->
           </h4>
+					
+
+
+
+
+
+
 						<ul class="list-group mb-3">
 							<li class="list-group-item d-flex justify-content-between lh-condensed">
 								<div>
 									<h6 class="my-0">Monthly Price</h6>
 									<small class="text-muted">As per adoption, you are automatically charged once a month on the date you signed up.</small>
+									<!--										<small class="text-muted">Monthly</small>-->
+									<!--																<h4 class="mb-3">Payment</h4>-->
+<!--
+									<form>
+										<div class="d-block my-3">
+											<div class="custom-control custom-radio">
+												<input id="monthly" name="plan" type="radio" class="custom-control-input" checked required>
+												<label class="custom-control-label" for="monthly">Monthly</label>
+											</div>
+											<div class="custom-control custom-radio">
+												<input id="annually" name="plan" type="radio" class="custom-control-input" required>
+												<label class="custom-control-label" for="annually">Anually</label>
+											</div>
+										</div>
+									</form>
+-->
+
 
 								</div>
-<!--
 								<span class="text-muted">RM 100
 								</span>
--->
 							</li>
+							<li class="list-group-item d-flex justify-content-between lh-condensed">
+								<div>
+									<h6 class="my-0">Animal</h6>
+									<small class="text-muted">Name: <i>Panda</i></small>
+									
+								</div>
+								<span class="text-muted">RM 0</span>
+							</li>
+
 
 							<li class="list-group-item d-flex justify-content-between">
 								<span>Total (RM)</span>
-								<strong id="totalPrice">0</strong>
+								<strong>100</strong>
 							</li>
 						</ul>
 					</div>
 					<div class="col-md-8 order-md-1">
 						<h4 class="mb-3">Adoption applicant</h4>
 <!--						<form class="needs-validation" novalidate>-->
-						<form>
+						<form name="myForm" method="post">
 							<div class="row">
 								<div class="col-md-12 mb-3">
 									<label for="fullName">Full name</label>
@@ -156,12 +226,12 @@ require_once "config.php";
 
 							<div class="mb-3">
 								<label for="animal">Animal</label>
-								<div class="row" id="radioAnimal">
+								<div class="row">
 									<div class="col">
 										<img src="../images/panda2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="panda" name="animalChoice" type="radio" class="custom-control-input" required onClick="updateTotal()">
+											<input id="panda" value='panda' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="panda">Panda</label>
 										</div>
 
@@ -170,7 +240,7 @@ require_once "config.php";
 										<img src="../images/tiger2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="tiger" name="animalChoice" type="radio" class="custom-control-input" required onClick="updateTotal()">
+											<input id="tiger" value='tiger' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="tiger">Tiger</label>
 										</div>
 
@@ -179,7 +249,7 @@ require_once "config.php";
 										<img src="../images/leopard2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="leopard" name="animalChoice" type="radio" class="custom-control-input" required onClick="updateTotal()">
+											<input id="leopard" value='leopard' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="leopard">Leopard</label>
 										</div>
 
@@ -188,41 +258,18 @@ require_once "config.php";
 										<img src="../images/orangutan2.jpg">
 										<br>
 										<div class="custom-control custom-radio">
-											<input id="orangUtan" name="animalChoice" type="radio" class="custom-control-input" required onClick="updateTotal()">
+											<input id="orangUtan" value='orang utan' name="animalChoice" type="radio" class="custom-control-input" required>
 											<label class="custom-control-label" for="orangUtan">Orang utan</label>
 										</div>
 
 									</div>
 								</div>
-										<script>
-//												var amount = document.querySelector('#amount');
-//
-//												amount.addEventListener('input', restrictNumber);
-//												function restrictNumber (e) {  
-//												  var newValue = this.value.replace(new RegExp(/[^\d+\.\d{0,2}$]/,'ig'), "");
-//												  this.value = newValue;
-//													
-//													document.getElementById("totalSummary").innerHTML = "RM "+Math.round(newValue * 100) / 100;
-//												}
-											function updateTotal (e) {
-												if (document.getElementById('panda').checked) {
-												  total = 200;
-												document.getElementById("totalPrice").innerHTML = "RM "+total;
-												}
-												if (document.getElementById('tiger').checked) {
-												  total = 180;
-													document.getElementById("totalPrice").innerHTML = "RM "+total;
-												}
-												if (document.getElementById('leopard').checked) {
-												  total = 170;
-													document.getElementById("totalPrice").innerHTML = "RM "+total;
-												}
-												if (document.getElementById('orangUtan').checked) {
-												  total = 160;
-													document.getElementById("totalPrice").innerHTML = "RM "+total;
-												}
-											}
-										</script>
+								<!--
+								<input type="text" class="form-control" id="phone" placeholder="" required>
+								<div class="invalid-feedback">
+									Phone number required.
+								</div>
+-->
 							</div>
 
 							<hr class="mb-4">
@@ -274,9 +321,9 @@ require_once "config.php";
 							</div>
 							<hr class="mb-4">
 							
-							<button class="btn btn-primary btn-lg btn-block" onClick="myPayment()">Proceed Payment</button>
+							<button class="btn btn-primary btn-lg btn-block" name="proceedPayment" type="submit" onClick="return confirm('Are you sure?')" >Proceed Payment</button>
 							
-							<script>
+							<!-- <script>
 								function myPayment() {
 	
 									if (confirm("Are you sure? You won't be able to go back to this page.")) {
@@ -287,7 +334,7 @@ require_once "config.php";
 									return false;
 								}
 							
-							</script>
+							</script> -->
 						</form>
 					</div>
 				</div>

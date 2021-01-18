@@ -1,6 +1,6 @@
 <?php
 session_start();
-//include 'admin/connect.php';
+//include 'connect.php';
 require_once "config.php";
 //if(isset($_POST)& !empty($_POST))
 

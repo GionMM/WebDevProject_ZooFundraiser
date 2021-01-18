@@ -21,7 +21,7 @@ require_once "config.php";
 		$date = date( 'Y-m-d H:i:s' );
 		
 		
-		$sqlDonation = "INSERT INTO donation (user_id, payment_method, amount, datetime) VALUES ('".$user_id."', '1', '".$totalSummary."', '".$date."')";
+		$sqlDonation = "INSERT INTO donation (user_id, payment_method, amount, datetime) VALUES ('".$user_id."', '1', '".$totalSummary."', CURRENT_TIMESTAMP())";
 		
 			if(mysqli_query($link, $sqlDonation))
 			{
@@ -104,10 +104,17 @@ require_once "config.php";
 
 		<div class="card" style="width: 100%;">
 			<div class="card-body">
+				<!--
+				<div class="py-5 text-center">
+										<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+					<h2>Order summary</h2>
+				</div>
+-->
 				<div class="row">
 					<div class="col-md-4 order-md-2 mb-4">
 						<h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Order summary</span>
+<!--            <span class="badge badge-secondary badge-pill">3</span>-->
           </h4>
 					
 						<ul class="list-group mb-3">

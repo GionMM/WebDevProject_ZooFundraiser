@@ -40,7 +40,7 @@ require_once "config.php";
 						<a class="nav-link" href="./main.php">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item dropdown active">
-						<a class="nav-link dropdown-toggle" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Donate</a>
+						<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Donate</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown07">
 							<a class="dropdown-item" href="./donation.php">Donation</a>
 							<a class="dropdown-item" href="./adoption.php">Adoption</a>
@@ -49,7 +49,6 @@ require_once "config.php";
 						</div>
 					</li>
 					<li class="nav-item"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
-					<li class="nav-item"> <a class="nav-link" href="help.php">Support <span class="sr-only"></span></a> </li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 
@@ -90,24 +89,6 @@ require_once "config.php";
 			</div>
 		</div>
 	</nav>
-	
-	<script>
-		
-var dropdown = document.getElementsByClassName("dropdown-toggle");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-  this.classList.toggle("active");
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-  dropdownContent.style.display = "none";
-  } else {
-  dropdownContent.style.display = "block";
-  }
-  });
-}
-</script>
 
 	<header style="height: 30vh;">
 		<link href="../css/header.css" rel="stylesheet">
@@ -129,7 +110,7 @@ for (i = 0; i < dropdown.length; i++) {
 	<div class="container">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb" style="background-color: transparent; ">
-				<li class="breadcrumb-item"><a href="./main.php" >Home</a>
+				<li class="breadcrumb-item"><a href="./main.php">Home</a>
 				</li>
 				<li class="breadcrumb-item"><a href="#">Learn more</a>
 				</li>
@@ -246,9 +227,9 @@ for (i = 0; i < dropdown.length; i++) {
 	</footer>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--	<script src="../js/jquery-3.3.1.min.js"></script>-->
+	<script src="../js/jquery-3.3.1.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!--	<script src="../js/popper.min.js"></script>-->
-<!--	<script src="../js/bootstrap-4.3.1.js"></script>-->
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap-4.3.1.js"></script>
 </body>
 </html>
