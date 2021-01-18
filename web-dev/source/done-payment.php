@@ -74,3 +74,7 @@ require_once "config.php";
 	</div>
 </body>
 </html>
+
+<?php
+	header( "Refresh:3; url=main.php");
+?>

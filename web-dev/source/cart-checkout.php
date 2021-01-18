@@ -51,6 +51,55 @@ require_once "config.php";
 
 	</style>
 </head>
+<?php 
+	if(isset($_POST['confirmPayment'])){
+		$user_id=$_SESSION['id'];
+		$fullName=mysqli_real_escape_string($link,$_POST['fullName']);
+		$phone=mysqli_real_escape_string($link,$_POST['phone']);
+		$address=mysqli_real_escape_string($link,$_POST['address']);
+		$total=$_POST['total'];
+		
+
+		if ($_POST['paymentMethod']==('credit'||'debit')){
+			$paymentMethod=1;
+		}
+
+		$query = "INSERT INTO `orders`(`order_id`, `user_id`, `payment_method`, `amount`, `datetime`, `delivery_address`) 
+		VALUES (NULL,$user_id,$paymentMethod,$total,CURRENT_TIMESTAMP(),'$address')";
+		mysqli_query($link, $query) or die("Insert Orders Failed");
+
+		$query="SELECT `order_id` FROM `orders` WHERE `user_id`=$user_id ORDER BY `datetime` DESC LIMIT 1";
+		$result = mysqli_query($link, $query) or die("Insert Orders Failed");
+		$row = mysqli_fetch_array($result);
+		$order_id=$row["order_id"];
+
+		$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
+		$result = mysqli_query($link, $query);
+
+		while ($row = mysqli_fetch_array($result)) {
+
+		  if ($result->num_rows > 0) {
+			  $merch_id 		= $row["merch_id"];
+			  $merch_name 	= $row["merch_name"];
+			  $merch_price 	= $row["merch_price"];
+			  $merch_photo 	= $row["merch_photo"];
+			  $quantity		= $row["quantity"];
+
+			  $query="INSERT INTO `orders_merch`(`order_id`, `merch_id`, `quantity`) VALUES ($order_id,$merch_id,$quantity)";
+			  mysqli_query($link, $query) or die("Insert Orders_Merch Failed");			
+		  }
+		}
+
+		$query="DELETE FROM `cart` WHERE `user_id`=$user_id";
+		mysqli_query($link, $query) or die("Clear Cart Failed");
+
+		mysqli_close($link);
+
+		header("location:done-payment.php");
+		die();
+	}
+?>
+
 
 <body>
 
@@ -80,52 +129,47 @@ require_once "config.php";
 					
 
 						<ul class="list-group mb-3">
+						<?php
+
+$user_id=$_SESSION['id'];
+  $query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
+  $result = mysqli_query($link, $query);
+  $total = 0;
+
+  while ($row = mysqli_fetch_array($result)) {
+
+	if ($result->num_rows > 0) {
+		$merch_id 		= $row["merch_id"];
+		$merch_name 	= $row["merch_name"];
+		$merch_price 	= $row["merch_price"];
+		$merch_photo 	= $row["merch_photo"];
+		$quantity		= $row["quantity"];
+
+		$total += ($merch_price * $quantity);
+		?>
 							<li class="list-group-item d-flex justify-content-between lh-condensed">
-								<div>
-									<h6 class="my-0">Red hoodie</h6>
-									<small class="text-muted">Quantity: 1</small>
-								</div>
-								<span class="text-muted">MYR 35.99
-								</span>
-							</li>
-							<li class="list-group-item d-flex justify-content-between lh-condensed">
-								<div>
-									<h6 class="my-0">Animal</h6>
-									<small class="text-muted">Name: <i>Panda</i></small>
-
-								</div>
-								<span class="text-muted">MYR 0</span>
-							</li>
-							<li class="list-group-item d-flex justify-content-between bg-light">
-								<div class="text-success">
-									<h6 class="my-0">Promo code</h6>
-									<small>EXAMPLECODE</small>
-								</div>
-								<span class="text-success">-RM 5</span>
-							</li>
-
-
-							<li class="list-group-item d-flex justify-content-between">
-								<span>Total (RM)</span>
-								<strong>30.99</strong>
-							</li>
-						</ul>
-
-						<form class="card p-2">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Promo code">
-								<div class="input-group-append">
-									<button type="submit" class="btn btn-secondary">Redeem</button>
-								</div>
-							</div>
-						</form>
-
+                                <div>
+                                    <h6 class="my-0"><?php echo $merch_name?></h6>
+                                    <small class="text-muted"><?php echo "Quantity: ".$quantity?></small>
+                                </div>
+                                <span class="text-muted"><?php echo 'RM' . number_format(($merch_price * $quantity), 2, '.', '');?>
+                                </span>
+                            </li>
+                            <?php					
+				}
+			} 
+		  ?>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total</span>
+                                <strong><?php echo 'RM' . number_format($total, 2, '.', '');?></strong>
+                            </li>
+                        </ul>
 
 					</div>
 					<div class="col-md-8 order-md-1">
 						<h4 class="mb-3">Billing address</h4>
 <!--						<form class="needs-validation" novalidate>-->
-						<form>
+						<form method="POST">
 							<div class="row">
 								<div class="col-md-12 mb-3">
 									<label for="fullName">Full name</label>
@@ -196,6 +240,9 @@ require_once "config.php";
 								</div>
 							</div>
 							
+
+							<input type="text" class="form-control" name="total" value="<?php echo $total;?>" hidden required>
+							
 							<hr class="mb-4">
 
 							<h4 class="mb-3">Payment</h4>
@@ -248,20 +295,8 @@ require_once "config.php";
 						
 
 							
-							<button class="btn btn-primary btn-lg btn-block" onClick="myPayment()">Proceed Payment</button>
-							
-							<script>
-								function myPayment() {
-	
-									if (confirm("Are you sure? You won't be able to go back to this page.")) {
-										
-										window.location.href='done-payment.php';
-									  } 
-									
-									return false;
-								}
-							
-							</script>
+							<button type="submit" name="confirmPayment" class="btn btn-primary btn-lg btn-block">Proceed
+                                Payment</button>
 							
 
 						</form>
