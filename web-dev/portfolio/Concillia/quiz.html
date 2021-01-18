@@ -1,0 +1,36 @@
+<html>
+<head><title>Pop Quiz</title></head>
+<body>
+<script type="text/javascript">
+var x=5*5;
+x=prompt("What is 7 + (6 X 5^2-3)?");
+while (x != 154)
+{
+alert("Wrong answer");
+x=prompt("What is 7 + (6 X 5^2-3)?",0);
+}
+document.write("Correct, the answer is " + x)
+</script>
+<br>
+<script type="text/javascript">
+    var number = prompt("Congratulations! You have answer it correctly. Enter a number between 1 to 3 to collect your prize.", 0)
+    switch (number)
+    {
+    case (number = "1"):
+    {document.write("You have won yourself a bar of chocolate!"); document.write("<br /><img src='chocolate.jpg'/> ");}
+    break;
+    case (number = "2"):
+    {document.write("You have won yourself a burger!"); document.write("<br /><img src='burger.jpg'/>");}
+    break;
+    case (number = "3"):
+{document.write("You have won yourself an ice-cream!"); document.write("<br /><img src='icecream.jpg'/>");}
+break;
+default:
+alert("Sorry, wrong value.");
+break;
+}
+</script>
+    </head>
+
+</body>
+</html>
