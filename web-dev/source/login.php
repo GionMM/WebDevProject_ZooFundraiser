@@ -73,7 +73,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 									$_SESSION[ "email" ] = $email;
 									$_SESSION[ "user_class" ] = $fetch['user_class'];
 								
-									header("location: main.php");		  
+									header("location: admin-home.php");		  
 								}
 								
 								else if($fetch['user_class'] == '0')
