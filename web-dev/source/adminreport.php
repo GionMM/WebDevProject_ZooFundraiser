@@ -14,10 +14,46 @@ require_once "config.php";
       Admin Zoo Fundraiser Donation
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!--Define graph-->
+    <script type="text/javascript">
+ google.load("visualization", "1", {packages:["corechart"]});
+ google.setOnLoadCallback(drawChart);
+ function drawChart() {
+ var data = google.visualization.arrayToDataTable([
+
+ ['amount','datetime'],
+ <?php
+			$query = "SELECT SUM(amount) FROM order WHERE YEAR(datetime)='2021' GROUP BY MONTH(month)";
+
+			 $exec = mysqli_query($con,$query);
+			 while($row = mysqli_fetch_array($exec)){
+
+			 echo "['".$row['amount']."',".$row['datetime']."],";
+			 }
+			 ?>
+
+ ]);
+
+ var options = {
+ title: 'Number of Students according to their class',
+  pieHole: 0.5,
+          pieSliceTextStyle: {
+            color: 'black',
+          },
+          legend: 'none'
+ };
+ var chart = new google.charts.Line(document.getElementById('linechart_material'));
+ chart.draw(data, google.charts.Line.convertOptions(options));
+ }
+    </script>
   </head>
 
   <body>
@@ -159,6 +195,13 @@ require_once "config.php";
 </div>
 </div>
   	<h5 style="color:orangered"><?=$message;?></h5>
+
+
+    <!--Call graph-->
+    <div class="container-fluid">
+     <div id="linechart_material" style="width: 100%; height: 500px;"></div>
+     </div>
+
 
     </body>
     </html>

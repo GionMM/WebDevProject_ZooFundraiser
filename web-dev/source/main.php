@@ -59,7 +59,7 @@ require_once "config.php";
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-		
+
 
 			<div class="collapse navbar-collapse" id="navbarsExample07">
 				<ul class="navbar-nav mr-auto">
@@ -80,28 +80,28 @@ require_once "config.php";
 				</ul>
 				<ul class="navbar-nav ml-auto">
 
-				<?php 
+				<?php
 					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
-						
+
 						$user_id = $_SESSION['id'];
-						
+
 						$sqlCartQuantity = 'SELECT sum(quantity) FROM cart WHERE user_id="'.$user_id.'"';
-						
+
 						$resultCartQuantity = mysqli_query($link, $sqlCartQuantity);
-		 
+
 						 while($row = mysqli_fetch_array($resultCartQuantity)) {
 
 							 if ( $resultCartQuantity -> num_rows > 0) {
-								 
+
 								 	$cartQuantity		= $row[ "sum(quantity)" ];
 							 }
 						 }
-						
-						echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span> 
+
+						echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
 							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
 							</li>';
-						
-						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')"> 
+
+						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')">
 							 Log out <span class="fa fa-sign-out"></span></a>
 							</li>';
 						}
@@ -109,7 +109,7 @@ require_once "config.php";
 						echo '<li><a class="nav-link" href="./login.php"><span class="fa fa-sign-in"></span> Login</a>
 						</li>';
 						}
-				
+
 				?>
 
 
@@ -120,7 +120,7 @@ require_once "config.php";
 
 
 	<script>
-		
+
 var dropdown = document.getElementsByClassName("dropdown-toggle");
 var i;
 
@@ -197,7 +197,7 @@ for (i = 0; i < dropdown.length; i++) {
 				<div class="col-lg-1 col-md-6 col-sm-12 text-center"></div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/janson.png" data-holder-rendered="true">
-					<h6>Janson</h6>		
+					<h6>Janson</h6>
 					<a href="#"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
@@ -220,7 +220,7 @@ for (i = 0; i < dropdown.length; i++) {
 					<!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
-					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/avatar.jpg" data-holder-rendered="true">
+					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/yy.jpg" data-holder-rendered="true">
 					<h6>Yong Yeong</h6>
 					<a href="#"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
@@ -236,8 +236,8 @@ for (i = 0; i < dropdown.length; i++) {
 			</div>
 
 		</div>
-		
-		<?php 
+
+		<?php
 					if ( isset( $_SESSION[ "loggedin" ] ) && $_SESSION[ "loggedin" ] === true ) {
 						echo '<div class="jumbotron">
 			<div class="container">

@@ -166,7 +166,22 @@ require_once "config.php";
 									<label for="state">State</label>
 									<select class="custom-select d-block w-100" id="state" required>
 										<option value="">Choose...</option>
-										<option>California</option>
+										<option>Wilayah Persekutuan Kuala Lumpur</option>
+                                        					<option>Wilayah Persekutuan Putrajaya</option>
+                                        					<option>Wilayah Persekutuan Labuan</option>
+                                        					<option>Selangor</option>
+                                        					<option>Negeri Sembilan</option>
+                                        					<option>Johor</option>
+                                        					<option>Melaka</option>
+                                        					<option>Pahang</option>
+                                        					<option>Terengganu</option>
+                                        					<option>Kelantan</option>
+                                        					<option>Perlis</option>
+                                        					<option>Kedah</option>
+                                        					<option>Pulau Pinang</option>
+                                        					<option>Perak</option>
+                                        					<option>Sabah</option>
+                                        					<option>Sarawak</option>
 									</select>
 									<div class="invalid-feedback">
 										Please provide a valid state.

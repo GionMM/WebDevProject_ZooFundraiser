@@ -40,6 +40,16 @@ require_once "config.php";
 		<a href="logout.php"><i class="fa fa-sign-out"></i>&emsp;Logout</a>
 
 	</div>
+	
+	<?php 
+
+ 	$animal_id = $_REQUEST['animal_id'];
+ 	$sql = "SELECT * FROM animal WHERE animal_id ='$animal_id'";
+
+ 	$result = mysqli_query($link,$sql);
+ 	$rows = mysqli_fetch_array($result);
+?>
+<form action="edit_animal2.php?animal_id=<?php echo $animal_id; ?>" method="get">
 
 	<div class="content">
 		<div style="margin-top: 2em;">
