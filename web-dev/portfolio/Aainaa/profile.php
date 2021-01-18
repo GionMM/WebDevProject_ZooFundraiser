@@ -193,6 +193,7 @@
 		/* rounded fa icon */
 		a.fa {
 			color: lightsalmon !important;
+			text-decoration: none;
 		}
 		
 		i.fa-2x {
@@ -225,6 +226,48 @@
 		input[type=submit]:hover {
 			background-color: #45a049;
 		}
+		
+		/* puzzle */
+		.example_body * {
+			margin: 0;
+			padding: 0;
+		}
+		
+		.holder {
+			margin: 20px auto;
+			width: 300px;
+		}
+		
+		ul,
+		li {
+			list-style: none;
+		}
+		
+		img {
+			vertical-align: top;
+		}
+		
+		#puzzle {
+			width: 300px;
+		}
+		
+		#puzzle:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		
+		#puzzle .puzzle-piece {
+			float: left;
+		}
+		
+		#puzzle .puzzle-piece.start {
+			background: #eaf2fe;
+		}
+		
+		#puzzle .puzzle-piece.over {
+			background: #d5d5d5;
+		}
 
 	</style>
 </head>
@@ -244,12 +287,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 	
-
-
-
-
-
-
 
 
 
@@ -381,7 +418,7 @@
 
 						<div class="row" id="experience">
 							<h3><span class="headline">Projects</span></h3>
-							<p class="col-md-12">These are all project that I've done in collaboration with my team members. We're extremely proud of each project that we done. The codes for these projects can be found on my Github page.
+							<p class="col-md-12">These are all past projects that I've done in collaboration with my team members. We're extremely proud of each project that we done. The codes for these projects can be found on my Github page.
 							</p>
 						</div>
 
@@ -392,9 +429,9 @@
 										<div class="vl"></div>
 									</div>
 									<div class="col-md-11">
-										<h5>Buffet Decision using Genetic Algorithm</h5> 
+										<h5>Buffet Decision using Genetic Algorithm</h5>
 										<small>2019-2020</small>
-										<p>Evolutionary algorithm is applied to the task of generating buffet menus based on time taken to finish food and get money's worth at the buffet.</p>
+										<p>Evolutionary algorithm is applied to the task of generating buffet menus based on time taken to finish food and get money's worth from the buffet.</p>
 									</div>
 								</div>
 								<br>
@@ -403,7 +440,7 @@
 										<div class="vl"></div>
 									</div>
 									<div class="col-md-11">
-										<h5>Handwriten Text Recognition</h5> 
+										<h5>Handwriten Text Recognition</h5>
 										<small>2020-2021</small>
 										<p>A system for recognizing handwritten characters, including pre-processing apparatus for generating a set of features for each handwritten character.</p>
 									</div>
@@ -415,7 +452,7 @@
 										<div class="vl"></div>
 									</div>
 									<div class="col-md-11">
-										<h5>Dvd Rental Management System</h5> 
+										<h5>Dvd Rental Management System</h5>
 										<small>2018-2019</small>
 										<p>A simple management system develop using Java programming to keep track of a Dvd store transaction and user data.</p>
 									</div>
@@ -455,6 +492,8 @@
 							<div class="col-md-5">
 								<iframe width="426" height="240" src="https://www.youtube.com/embed/NlIjz7NCxy4">
 								</iframe>
+							
+
 
 								<audio controls="controls">
 									<source src="https://docs.google.com/uc?export=download&id=1DXPKe1v5QRHz5jOYCTwacCpNa0Dvz7YC">
@@ -472,7 +511,7 @@
 
 						<div class="row">
 							<div class="col-md-5">
-								
+
 								<div class="row" style="margin-left:10px;">
 
 									<div class="col-md-3">
@@ -500,30 +539,33 @@
 								<div class="col-md-12">
 									<span class="fa-stack fa-lg">
 									  <a class="fa fa-circle-thin fa-stack-2x"></a>
-									  <a class="fa fa-twitter fa-stack-1x"></a>
-									</span>
-
-									<span class="fa-stack fa-lg">
-									  <a class="fa fa-circle-thin fa-stack-2x"></a>
-									  <a class="fa fa-facebook fa-stack-1x"></a>
-									</span>
-
-									<span class="fa-stack fa-lg">
-									  <a class="fa fa-circle-thin fa-stack-2x"></a>
-									  <a class="fa fa-instagram fa-stack-1x"></a>
-									</span>
-
-									<span class="fa-stack fa-lg">
-									  <a class="fa fa-circle-thin fa-stack-2x"></a>
-									  <a class="fa fa-github fa-stack-1x"></a>
+									  <a class="fa fa-twitter fa-stack-1x" href="https://twitter.com/celoudnn" target="_blank"></a>
 									</span>
 								
 
 
+									<span class="fa-stack fa-lg">
+									  <a class="fa fa-circle-thin fa-stack-2x"></a>
+									  <a class="fa fa-facebook fa-stack-1x" href="https://www.facebook.com/aainaa.rohaizad.1" target="_blank"></a>
+									</span>
+								
+
+
+									<span class="fa-stack fa-lg">
+									  <a class="fa fa-circle-thin fa-stack-2x"></a>
+									  <a class="fa fa-instagram fa-stack-1x" href="https://www.instagram.com/ainarohaizad/" target="_blank"></a>
+									</span>
+								
+
+
+									<span class="fa-stack fa-lg">
+									  <a class="fa fa-circle-thin fa-stack-2x"></a>
+									  <a class="fa fa-github fa-stack-1x" href="https://github.com/supcicak0" target="_blank"></a>
+									</span>
+								
 
 
 								</div>
-
 
 							</div>
 							<div class="col-md-7">
@@ -541,14 +583,117 @@
 										<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
 									</div>
 									<div class="text-center">
-										<button  class="btn btn-primary" style="margin-top: 5px;background-color: lightsalmon;border: none;">Submit</button>
+										<button class="btn btn-primary" style="margin-top: 5px;background-color: lightsalmon;border: none;">Submit</button>
 									</div>
-									
+
 								</form>
 							</div>
 
 						</div>
 
+						<br>
+						<!-- source: http://download.tizen.org/misc/examples/w3c_html5/ui/html5_drag_and_drop/ -->
+						<div class="row">
+							<h3><span class="headline">Just for Fun!</span></h3>
+						</div>
+						<div class="row">
+							<div class="col-md-2"></div>
+							<div class="example_body col-md-8">
+								<div class="holder">
+									<div>
+										<p class="txt" style="text-align: center">Try to complete the puzzle below.</p>
+									</div>
+									<ul id="puzzle">
+										<li class="puzzle-piece" draggable="true">
+											<img src="puzz_06.png">
+										</li>
+										<li class="puzzle-piece" draggable="true">
+											<img src="puzz_02.png">
+										</li>
+										<li class="puzzle-piece" draggable="true">
+											<img src="puzz_04.png">
+										</li>
+										<li class="puzzle-piece" draggable="true">
+											<img src="puzz_05.png">
+										</li>
+										<li class="puzzle-piece" draggable="true">
+											<img src="puzz_01.png">
+										</li>
+										<li class="puzzle-piece" draggable="true">
+											<img src="puzz_03.png">
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+
+
+
+						<script>
+							var cols = document.querySelectorAll( '#puzzle .puzzle-piece' );
+							var colsLength = cols.length;
+
+							var dragElem = null;
+
+							var puzzleKey = [ "01", "02", "03", "04", "05", "06" ];
+							var puzzleArray = [];
+
+							function puzzleCheck() {
+								//Initialize user key
+								puzzleArray = [];
+								//Insert the key in the array
+								for ( var i = 0; i < colsLength; i++ ) {
+									puzzleArray.push( cols[ i ].children[ 0 ].getAttribute( 'src' ).substring( 5, 7 ) );
+								};
+								originKey = puzzleKey.join();
+								userKey = puzzleArray.join();
+
+								if ( originKey === userKey ) {
+									alert( "Success !" );
+								};
+							};
+
+							function dragStartHandler( e ) {
+								//Set data
+								dragElem = this;
+								e.dataTransfer.effectAllowed = 'move';
+								e.dataTransfer.setData( 'text/html', this.innerHTML );
+								this.classList.add( 'over' );
+								for ( var i = 0; i < colsLength; i++ ) {
+									cols[ i ].classList.add( 'start' );
+								};
+							};
+
+							function dragOverHandler( e ) {
+								e.preventDefault();
+								this.classList.add( 'over' );
+								e.dataTransfer.dropEffect = 'move';
+							};
+
+							function dragLeaveHandler( e ) {
+								this.classList.remove( 'over' );
+							};
+
+							function dragDropHandler( e ) {
+								e.preventDefault();
+								//Get data
+								dragElem.innerHTML = this.innerHTML;
+								this.innerHTML = e.dataTransfer.getData( 'text/html' );
+								for ( var i = 0; i < colsLength; i++ ) {
+									cols[ i ].className = "puzzle-piece";
+								};
+								//Check key
+								puzzleCheck();
+							};
+
+							for ( var i = 0; i < colsLength; i++ ) {
+								cols[ i ].addEventListener( 'dragstart', dragStartHandler, false );
+								cols[ i ].addEventListener( 'dragover', dragOverHandler, false );
+								cols[ i ].addEventListener( 'dragleave', dragLeaveHandler, false );
+								cols[ i ].addEventListener( 'drop', dragDropHandler, false );
+							};
+						</script>
 
 					</div>
 
