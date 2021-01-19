@@ -4,9 +4,46 @@ session_start();
 if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] != true ) ) {
 	header( "location: main.php" );
 	exit;
+} else {
+	$user_id = $_SESSION[ 'id' ];
 }
 
 require_once "config.php";
+?>
+<?php
+$error_message = "";
+
+if ( isset( $_POST[ 'proceedPayment' ] ) ) {
+
+	$date = date( 'Y-m-d H:i:s' );
+
+	$fullname = $_POST[ 'fullName' ];
+	$phone = $_POST[ 'phone' ];
+	$address = $_POST[ 'address' ];
+	$zip = $_POST[ 'zip' ];
+
+	$address = $fullname . ', ' . $phone . ', ' . $address . ', ' . $zip;
+
+	$resultTotal = mysqli_query( $link, "SELECT sum(c.quantity*m.merch_price) FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='" . $user_id . "' " );
+	$row = mysqli_fetch_assoc( $resultTotal );
+	$totalAmount = $row[ 'sum(c.quantity*m.merch_price)' ];
+
+	$sqlCheckout = "INSERT INTO orders (user_id, payment_method, amount, datetime, delivery_address) VALUES ('" . $user_id . "', '1', '" . $totalAmount . "', '" . $date . "', '" . $address . "')";
+
+	if ( mysqli_query( $link, $sqlCheckout ) ) {
+		
+		mysqli_query( $link, 'DELETE from cart WHERE user_id = ' . $user_id . ' ' );
+		
+		echo "<script>";
+		echo "window.location.href='done-payment.php'";
+		echo "</script>";
+	} else {
+		echo "<script>";
+		echo "alert('There's something wrong.);";
+		echo "</script>";
+	}
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,55 +88,6 @@ require_once "config.php";
 
 	</style>
 </head>
-<?php 
-	if(isset($_POST['confirmPayment'])){
-		$user_id=$_SESSION['id'];
-		$fullName=mysqli_real_escape_string($link,$_POST['fullName']);
-		$phone=mysqli_real_escape_string($link,$_POST['phone']);
-		$address=mysqli_real_escape_string($link,$_POST['address']);
-		$total=$_POST['total'];
-		
-
-		if ($_POST['paymentMethod']==('credit'||'debit')){
-			$paymentMethod=1;
-		}
-
-		$query = "INSERT INTO `orders`(`order_id`, `user_id`, `payment_method`, `amount`, `datetime`, `delivery_address`) 
-		VALUES (NULL,$user_id,$paymentMethod,$total,CURRENT_TIMESTAMP(),'$address')";
-		mysqli_query($link, $query) or die("Insert Orders Failed");
-
-		$query="SELECT `order_id` FROM `orders` WHERE `user_id`=$user_id ORDER BY `datetime` DESC LIMIT 1";
-		$result = mysqli_query($link, $query) or die("Insert Orders Failed");
-		$row = mysqli_fetch_array($result);
-		$order_id=$row["order_id"];
-
-		$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
-		$result = mysqli_query($link, $query);
-
-		while ($row = mysqli_fetch_array($result)) {
-
-		  if ($result->num_rows > 0) {
-			  $merch_id 		= $row["merch_id"];
-			  $merch_name 	= $row["merch_name"];
-			  $merch_price 	= $row["merch_price"];
-			  $merch_photo 	= $row["merch_photo"];
-			  $quantity		= $row["quantity"];
-
-			  $query="INSERT INTO `orders_merch`(`order_id`, `merch_id`, `quantity`) VALUES ($order_id,$merch_id,$quantity)";
-			  mysqli_query($link, $query) or die("Insert Orders_Merch Failed");			
-		  }
-		}
-
-		$query="DELETE FROM `cart` WHERE `user_id`=$user_id";
-		mysqli_query($link, $query) or die("Clear Cart Failed");
-
-		mysqli_close($link);
-
-		header("location:done-payment.php");
-		die();
-	}
-?>
-
 
 <body>
 
@@ -108,7 +96,7 @@ require_once "config.php";
 			<a class="navbar-brand" href="#">Website logo &#124; <span class="lead">Cart checkout</span></a>
 
 			<ul class="navbar-nav ml-auto">
-				<li><a class="nav-link" href="./adoption.php"><span class="fa fa-home"></span> Home</a>
+				<li><a class="nav-link" href="./store-home.php"><span class="fa fa-home"></span> Home</a>
 				</li>
 			</ul>
 
@@ -128,52 +116,85 @@ require_once "config.php";
           </h4>
 					
 
+
 						<ul class="list-group mb-3">
-						<?php
 
-$user_id=$_SESSION['id'];
-  $query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
-  $result = mysqli_query($link, $query);
-  $total = 0;
+							<?php 
+							$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='".$user_id."'";
+							
+							$result = mysqli_query($link, $query);
+							
+								while($row = mysqli_fetch_array($result)) {
 
-  while ($row = mysqli_fetch_array($result)) {
+			 
+									 if ( $result -> num_rows > 0) {
+										 $merch_id 		= $row[ "merch_id" ];
+										 $merch_name 	= $row[ "merch_name" ];
+										 $merch_price 	= $row[ "merch_price" ];
+										 $quantity		= $row[ "quantity" ];
+										 
+										 echo '<li class="list-group-item d-flex justify-content-between lh-condensed">';
+										 echo '<div>';
+										 echo '<h6 class="my-0">'.$merch_name.'</h6>';
+										 echo '<small class="text-muted">Quantity: '.$quantity.'</small>';
+										 echo '</div>';
+										 echo '<span class="text-muted">RM'.$quantity*$merch_price.' ';
+										 echo '</span>';
+										 echo '</li>';
+										 
+									 }
+								}
+										 
+							
+							?>
 
-	if ($result->num_rows > 0) {
-		$merch_id 		= $row["merch_id"];
-		$merch_name 	= $row["merch_name"];
-		$merch_price 	= $row["merch_price"];
-		$merch_photo 	= $row["merch_photo"];
-		$quantity		= $row["quantity"];
+							<li class="list-group-item d-flex justify-content-between bg-light">
+								<div class="text-success">
+									<h6 class="my-0">Promo code</h6>
+									<small>None</small>
+								</div>
+								<span class="text-success">-RM0</span>
+							</li>
 
-		$total += ($merch_price * $quantity);
-		?>
-							<li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0"><?php echo $merch_name?></h6>
-                                    <small class="text-muted"><?php echo "Quantity: ".$quantity?></small>
-                                </div>
-                                <span class="text-muted"><?php echo 'RM' . number_format(($merch_price * $quantity), 2, '.', '');?>
-                                </span>
-                            </li>
-                            <?php					
-				}
-			} 
-		  ?>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Total</span>
-                                <strong><?php echo 'RM' . number_format($total, 2, '.', '');?></strong>
-                            </li>
-                        </ul>
+							<?php
+
+							//							$queryTotal = "SELECT sum(c.quantity*m.merch_price) FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='".$user_id."'";
+
+							$resultTotal = mysqli_query( $link, "SELECT sum(c.quantity*m.merch_price) FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='" . $user_id . "' " );
+							$row = mysqli_fetch_assoc( $resultTotal );
+							$sum = $row[ 'sum(c.quantity*m.merch_price)' ];
+
+							echo '<li class="list-group-item d-flex justify-content-between">';
+							echo '<span>Total (RM)</span>';
+							echo '<strong id="totalAmount">' . $sum . '</strong>';
+							echo '</li>';
+
+							?>
+							<span class="help-block">
+								<?php echo $error_message; ?>
+							</span>
+
+						</ul>
+
+						<form class="card p-2">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Promo code">
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-secondary">Redeem</button>
+								</div>
+							</div>
+						</form>
+
 
 					</div>
 					<div class="col-md-8 order-md-1">
 						<h4 class="mb-3">Billing address</h4>
-<!--						<form class="needs-validation" novalidate>-->
-						<form method="POST">
+
+						<form method="post">
 							<div class="row">
 								<div class="col-md-12 mb-3">
 									<label for="fullName">Full name</label>
-									<input type="text" class="form-control" id="fullName" placeholder="" value="" required>
+									<input type="text" class="form-control" id="fullName" name="fullName" placeholder="" value="" required>
 									<div class="invalid-feedback">
 										Valid full name is required.
 									</div>
@@ -181,6 +202,7 @@ $user_id=$_SESSION['id'];
 
 							</div>
 
+							<!--
 							<div class="mb-3">
 								<label for="email">Email <span class="text-muted">(Optional)</span></label>
 								<input type="email" class="form-control" id="email" placeholder="you@example.com">
@@ -188,10 +210,11 @@ $user_id=$_SESSION['id'];
 									Please enter a valid email address for shipping updates.
 								</div>
 							</div>
-							
+-->
+
 							<div class="mb-3">
 								<label for="phone">Phone number</label>
-								<input type="text" class="form-control" id="phone" placeholder="" required>
+								<input type="text" class="form-control" id="phone" name="phone" placeholder="" required>
 								<div class="invalid-feedback">
 									Phone number required.
 								</div>
@@ -199,7 +222,7 @@ $user_id=$_SESSION['id'];
 
 							<div class="mb-3">
 								<label for="address">Full Address</label>
-								<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+								<input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
 								<div class="invalid-feedback">
 									Please enter your shipping address.
 								</div>
@@ -211,21 +234,21 @@ $user_id=$_SESSION['id'];
 									<select class="custom-select d-block w-100" id="state" required>
 										<option value="">Choose...</option>
 										<option>Wilayah Persekutuan Kuala Lumpur</option>
-                                        					<option>Wilayah Persekutuan Putrajaya</option>
-                                        					<option>Wilayah Persekutuan Labuan</option>
-                                        					<option>Selangor</option>
-                                        					<option>Negeri Sembilan</option>
-                                        					<option>Johor</option>
-                                        					<option>Melaka</option>
-                                        					<option>Pahang</option>
-                                        					<option>Terengganu</option>
-                                        					<option>Kelantan</option>
-                                        					<option>Perlis</option>
-                                        					<option>Kedah</option>
-                                        					<option>Pulau Pinang</option>
-                                        					<option>Perak</option>
-                                        					<option>Sabah</option>
-                                        					<option>Sarawak</option>
+										<option>Wilayah Persekutuan Putrajaya</option>
+										<option>Wilayah Persekutuan Labuan</option>
+										<option>Selangor</option>
+										<option>Negeri Sembilan</option>
+										<option>Johor</option>
+										<option>Melaka</option>
+										<option>Pahang</option>
+										<option>Terengganu</option>
+										<option>Kelantan</option>
+										<option>Perlis</option>
+										<option>Kedah</option>
+										<option>Pulau Pinang</option>
+										<option>Perak</option>
+										<option>Sabah</option>
+										<option>Sarawak</option>
 									</select>
 									<div class="invalid-feedback">
 										Please provide a valid state.
@@ -233,16 +256,13 @@ $user_id=$_SESSION['id'];
 								</div>
 								<div class="col-md-4 mb-3">
 									<label for="zip">Zip</label>
-									<input type="text" class="form-control" id="zip" placeholder="" required>
+									<input type="text" class="form-control" id="zip" name="zip" placeholder="" required>
 									<div class="invalid-feedback">
 										Zip code required.
 									</div>
 								</div>
 							</div>
-							
 
-							<input type="text" class="form-control" name="total" value="<?php echo $total;?>" hidden required>
-							
 							<hr class="mb-4">
 
 							<h4 class="mb-3">Payment</h4>
@@ -257,7 +277,7 @@ $user_id=$_SESSION['id'];
 									<label class="custom-control-label" for="debit">Debit card</label>
 								</div>
 							</div>
-							
+
 							<div class="row">
 								<div class="col-md-6 mb-3">
 									<label for="cc-name">Name on card</label>
@@ -292,12 +312,11 @@ $user_id=$_SESSION['id'];
 								</div>
 							</div>
 							<hr class="mb-4">
-						
 
-							
-							<button type="submit" name="confirmPayment" class="btn btn-primary btn-lg btn-block">Proceed
-                                Payment</button>
-							
+
+
+							<button class="btn btn-primary btn-lg btn-block" name="proceedPayment">Proceed Payment</button>
+
 
 						</form>
 					</div>

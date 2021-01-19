@@ -21,7 +21,7 @@ require_once "config.php";
 		$date = date( 'Y-m-d H:i:s' );
 		
 		
-		$sqlDonation = "INSERT INTO donation (user_id, payment_method, amount, datetime) VALUES ('".$user_id."', '1', '".$totalSummary."', CURRENT_TIMESTAMP())";
+		$sqlDonation = "INSERT INTO donation (user_id, payment_method, amount, datetime) VALUES ('".$user_id."', '1', '".$totalSummary."', '".$date."')";
 		
 			if(mysqli_query($link, $sqlDonation))
 			{
@@ -150,15 +150,7 @@ require_once "config.php";
 										</script>
 										<div class="invalid-feedback">
 											Valid amount is required.
-										</div>
-
-										
-									
-									
-									
-									
-									
-									
+										</div>		
 								</div>
 							</div>
 
@@ -241,7 +233,7 @@ require_once "config.php";
 							</div>
 							<hr class="mb-4">
 							
-							<button class="btn btn-primary btn-lg btn-block" name="proceedPayment" value="'.$merch_id.'" onClick="return confirm('Are you sure?')" >Proceed Payment</button>
+							<button class="btn btn-primary btn-lg btn-block" name="proceedPayment"  onClick="return confirm('Are you sure?n\You won't be able to go back to this page.')" >Proceed Payment</button>
 							
 <!--
 							<script>

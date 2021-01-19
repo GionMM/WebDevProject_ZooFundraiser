@@ -77,6 +77,15 @@ require_once "config.php";
 					</li>
 					<li class="nav-item"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
 					<li class="nav-item"> <a class="nav-link" href="help.php">Support <span class="sr-only"></span></a> </li>
+					<?php 
+					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
+						if($_SESSION["user_class"] == '1') {
+							echo '<li class="nav-item"> <a class="nav-link" href="admin-home.php">Admin Home <span class="sr-only"></span></a> </li>';
+						}
+					}
+					
+					
+					?>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 
@@ -214,7 +223,7 @@ for (i = 0; i < dropdown.length; i++) {
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
-					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../portfolio/Aainaa/avatar.jpg" data-holder-rendered="true">
+					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/Aainaa.jpg" data-holder-rendered="true">
 					<h6>Aainaa</h6>
 					<a href="../portfolio/Aainaa/profile.php"> View portfolio → </a>
 					<!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
@@ -247,7 +256,7 @@ for (i = 0; i < dropdown.length; i++) {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="./donation.php" title="">Donate now!</a> </div>
+					<div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="./register.php" title="">Donate now!</a> </div>
 				</div>
 			</div>
 		</div>';

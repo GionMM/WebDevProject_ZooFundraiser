@@ -3,6 +3,12 @@ session_start();
 
 require_once "config.php";
 
+if($_SESSION["user_class"]!='1')
+{
+	header( "location: main.php" );
+	exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,12 +37,14 @@ require_once "config.php";
 		<a style="text-align: center">Website logo</a>
 		<hr>
 
-		<a class="active" href="admin-home.php"><i class="fa fa-tachometer"></i>&emsp;Dashboard</a>
+		<a href="admin-home.php"><i class="fa fa-tachometer"></i>&emsp;Dashboard</a>
 		<a href="adminedit.php"><i class="fa fa-users"></i>&emsp;Manage staff</a>
 		<a href="adminadopt.php"><i class="fa fa-paw"></i>&emsp;Manage animal</a>
 		<a href="admindonate.php"><i class="fa fa-money"></i>&emsp;Manage donation</a>
-		<a href="#about"><i class="fa fa-heart"></i>&emsp;Manage adoption</a>
+		<a href="admin-view-adoption.php"><i class="fa fa-heart"></i>&emsp;Manage adoption</a>
 		<a href="adminstore.php"><i class="fa fa-shopping-bag"></i>&emsp;Manage store</a>
+		<a href="adminreport.php"><i class="fa fa-bar-chart"></i>&emsp;Report</a>
+		<a href="main.php"><i class="fa fa-home"></i>&emsp;User Homepage</a>
 		<a href="logout.php"><i class="fa fa-sign-out"></i>&emsp;Logout</a>
 
 	</div>
