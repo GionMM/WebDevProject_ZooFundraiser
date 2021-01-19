@@ -77,6 +77,15 @@ require_once "config.php";
 					</li>
 					<li class="nav-item"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
 					<li class="nav-item"> <a class="nav-link" href="help.php">Support <span class="sr-only"></span></a> </li>
+					<?php 
+					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
+						if($_SESSION["user_class"] == '1') {
+							echo '<li class="nav-item"> <a class="nav-link" href="admin-home.php">Admin Home <span class="sr-only"></span></a> </li>';
+						}
+					}
+					
+					
+					?>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 
@@ -96,10 +105,21 @@ require_once "config.php";
 								 	$cartQuantity		= $row[ "sum(quantity)" ];
 							 }
 						 }
-
-						echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
+						
+						if ($cartQuantity != NULL)
+						{
+							echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
 							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
 							</li>';
+						}
+						else {
+							echo ' <li><a class="nav-link" href="./cart.php" style="pointer-events: none; cursor: default;"><span class="fa fa-shopping-cart"></span>
+							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
+							</li>';
+							
+						}
+
+
 
 						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')">
 							 Log out <span class="fa fa-sign-out"></span></a>
@@ -198,31 +218,31 @@ for (i = 0; i < dropdown.length; i++) {
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/janson.png" data-holder-rendered="true">
 					<h6>Janson</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Janson/index.html"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/Concillia.jpg" data-holder-rendered="true">
 					<h6>Concillia</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Concillia/concillia.html"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/Gion.jpg" data-holder-rendered="true">
 					<h6>Min Ming</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Min Ming/Gion.html"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/Aainaa.jpg" data-holder-rendered="true">
 					<h6>Aainaa</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Aainaa/profile.php"> View portfolio → </a>
 					<!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/yy.jpg" data-holder-rendered="true">
 					<h6>Yong Yeong</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Yong Yeong/biography.html"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-1 col-md-6 col-sm-12 text-center"></div>

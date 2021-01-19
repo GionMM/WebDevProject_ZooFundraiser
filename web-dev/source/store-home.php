@@ -103,6 +103,15 @@ require_once "config.php";
 					</li>
 					<li class="nav-item active"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
 					<li class="nav-item"> <a class="nav-link" href="help.php">Support <span class="sr-only"></span></a> </li>
+					<?php 
+					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
+						if($_SESSION["user_class"] == '1') {
+							echo '<li class="nav-item"> <a class="nav-link" href="admin-home.php">Admin Home <span class="sr-only"></span></a> </li>';
+						}
+					}
+					
+					
+					?>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 
@@ -123,9 +132,18 @@ require_once "config.php";
 							 }
 						 }
 						
-						echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span> 
+						if ($cartQuantity != NULL)
+						{
+							echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
 							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
 							</li>';
+						}
+						else {
+							echo ' <li><a class="nav-link" href="./cart.php" style="pointer-events: none; cursor: default;"><span class="fa fa-shopping-cart"></span>
+							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
+							</li>';
+							
+						}
 						
 						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')"> 
 							 Log out <span class="fa fa-sign-out"></span></a>
