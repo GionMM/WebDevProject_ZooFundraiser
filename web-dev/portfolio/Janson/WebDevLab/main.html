@@ -1,0 +1,117 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css" type="text/css">
+    <title>Janson's Biography</title>
+</head>
+
+<script src="js/pageJumper.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#change").click(function () {
+        $("body").css({ "background-color":"rgb(102,102,153)"});
+        $(".MainText").css({ "background-color":"rgb(102,102,153)"});
+        $(".banner").css({ "background-color":"rgb(152,58,197)"});
+        $("h1,p,ul,li,h2,h3").css({ "color": "rgb(250, 250, 250)" });
+      });    
+    })
+</script>
+<body>
+
+    <div class="banner">
+        <h1>My Biography</h1>
+        <button id="change">Dark Mode</button>
+    </div>
+
+    <img id="myPhoto" src="MyPhoto.jpg" alt="My Photo Back when I was Form 5" width="150" height="200">
+
+    <div class="MainText">
+        <p>Hi! My name is Liew Kok Foo, also known as Janson.</p>
+
+        <p>I'm currently a 3rd year student in Universiti Teknikal Malaysia Melaka (UTeM), studying about Artificial
+            Intelligence. This is my <a href="https://github.com/Janson-L">Github Profile</a>.</p>
+        <p>I like to: </p>
+
+        <ul>
+            <li>Eat</li>
+            <li>Sleep</li>
+            <li>Play games</li>
+        </ul>
+
+        <p>Nice to meet you!</p>
+
+        <h2>Here, watch a fun video or listen to the audio file ;)</h2>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_3wkyerSBpw?controls=0" autoplay="1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+        <audio src="Trololo.mp3" controls>
+            Your browser does not support the audio element.
+        </audio>
+
+        <h2>My Art Gallery</h2>
+        <p>My art collection</p>
+
+        <div>
+
+            <svg id="svgelem" height="200" xmlns="http://www.w3.org/2000/svg">
+                <circle id="redcircle" cx="50" cy="50" r="50" fill="red" />
+            </svg>
+
+            <svg id="svgelem" height="200" xmlns="http://www.w3.org/2000/svg">
+                <rect id="redrect" width="300" height="100" fill="blue" />
+            </svg>
+
+            <svg id="svgelem" height="200" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="20,10 300,20, 170,50" fill="green" />
+            </svg>
+        </div>
+        <div>
+            <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+            <canvas id="myCanvas2" width="200" height="100" style="border:1px solid #000000;"></canvas>
+            <canvas id="myCanvas3" width="200" height="100" style="border:1px solid #000000;"></canvas>
+
+            <script>
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.font = "30px Arial";
+                ctx.fillText("Hello World", 10, 50);
+
+                var c = document.getElementById("myCanvas2");
+                var ctx = c.getContext("2d");
+                ctx.beginPath();
+                ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+                ctx.stroke();
+
+                var c = document.getElementById("myCanvas3");
+                var ctx = c.getContext("2d");
+
+                // Create gradient
+                var grd = ctx.createLinearGradient(0, 0, 200, 0);
+                grd.addColorStop(0, "red");
+                grd.addColorStop(1, "white");
+
+                // Fill with gradient
+                ctx.fillStyle = grd;
+                ctx.fillRect(10, 10, 150, 80);
+
+            </script>
+        </div>
+
+        <h2>Select the desired platform to contact me:</h2>
+        <form action="">
+            <select name=" SiteSelector" size="1" onChange="goToSite(this.value);">
+                <option value="" selected disabled hidden>Select a Platform</option>
+                <option value="contactForm.html"> Contact Form </option>
+                <option value="https://www.linkedin.com/in/janson-liew-81a3261ab"> LinkedIn </option>
+            </select>
+        </form>
+    </div>
+</body>
+
+</html>

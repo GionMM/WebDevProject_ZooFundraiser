@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css" type="text/css">
+    <title>Contact Form</title>
+</head>
+<script src="js/dragAndDrop.js"></script>
+<script src="js/entryValidation.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#change").click(function () {
+        $("body").css({ "background-color":"rgb(102,102,153)"});
+        $(".MainText").css({ "background-color":"rgb(102,102,153)"});
+        $(".banner").css({ "background-color":"rgb(152,58,197)"});
+        $("h1,p,ul,li,h2,h3").css({ "color": "rgb(250, 250, 250)" });
+      });    
+    })
+</script>
+
+<body>
+    <div class="banner">
+        <h1>Contact Form</h1>
+        <button id="change">Dark Mode</button>
+    </div>
+    
+    <div class="MainText">
+        <p>If you would like to talk, please fill out the form below.</p>
+
+        <form action="" onsubmit="return entryValidation();">
+            <p>
+            <div class="col-25">
+                <label for="firstname">First Name: </label>
+            </div>
+
+            <input type="text" id="firstname" required><br />
+
+            <div class="col-25">
+                <label for="lastname">Last Name: </label>
+            </div>
+            <input type="text" id="lastname" required><br />
+            <div class="col-25">
+                <label for="email">Email: </label>
+            </div>
+            <input type="text" id="email" required><br>
+            <div class="col-25">
+                <label for="bdate">Birth Date: </label>
+            </div>
+            <input type="date" id="bdate"><br>
+            <div class="col-25">
+                <label for="blogURL">Blog URL: </label>
+            </div>
+            <input type="url" id="blogurl"><br>
+
+            <div id="box">
+                <div id="captchaDesc">Drag the small box into the big box to prove that you are not a robot</div>
+                <div id="boxA" draggable="true" ondragstart="return dragStart(event)"></div>
+                <div id="boxB" flag="return dragEnter(event)" ondrop="return dragDrop(event)"
+                    ondragover="return dragOver(event)"></div>
+            </div>
+
+            <input type="submit" value="Send" id="togglee" style="display: none;">
+            </p>
+        </form>
+
+    </div>
+</body>
+
+</html>

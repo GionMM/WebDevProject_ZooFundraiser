@@ -1,0 +1,75 @@
+p,li{
+    font: 15px Arial;
+}
+
+#myPhoto{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.banner{
+    background-color: darkcyan;
+    padding:10px;
+    font: 20px Arial;
+}
+
+.MainText{
+    background-color: lightblue;
+    padding:30px;
+}
+
+body {
+    margin: 0px;
+    background-color: lightblue;
+    font: 20px Arial;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    border: none;
+    color: white;
+    padding: 12px 12px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type=text],input[type=email],input[type=date] , input[type=url]{
+    width: 15%;
+    padding: 5px 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+}
+  
+.col-75 {
+    float: left;
+    width: 75%;
+}
+
+#boxA, #boxB {
+    float:left;padding:10px;margin:10px; -moz-user-select:none;
+   }
+   #boxA { background-color: #6633FF; width:75px; height:75px; }
+   #boxB { background-color: #FF6699; width:150px; height:150px; }
+   
+#captchaDesc{
+    font: 15px Arial;
+    font-style: italic;
+}
+
+#test {
+    width:100px;
+    height:100px;
+    margin: 0px auto;
+    }
+
+#test2{
+    background-color:rgba(250, 250, 250, 0.89);
+}
+   
