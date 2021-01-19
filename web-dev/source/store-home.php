@@ -64,7 +64,7 @@ require_once "config.php";
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Store</title>
+	<title>Donation page</title>
 	<!-- Bootstrap -->
 	<link href="../css/bootstrap-4.3.1.css" rel="stylesheet">
 	<link href="../css/navbar.css" rel="stylesheet">
@@ -103,6 +103,15 @@ require_once "config.php";
 					</li>
 					<li class="nav-item active"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
 					<li class="nav-item"> <a class="nav-link" href="help.php">Support <span class="sr-only"></span></a> </li>
+					<?php 
+					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
+						if($_SESSION["user_class"] == '1') {
+							echo '<li class="nav-item"> <a class="nav-link" href="admin-home.php">Admin Home <span class="sr-only"></span></a> </li>';
+						}
+					}
+					
+					
+					?>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 

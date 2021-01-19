@@ -5,6 +5,7 @@ require_once "config.php";
 $animal_name = $_POST['animal_name'];
 $animal_species = $_POST['animal_species'];
 $annual_adoption_price = $_POST['annual_adoption_price'];
+$animal_avatar = $_POST['animal_avatar'];
 	
 	/*if ($connect->connect_error) {
 		die(" Connection failed: " . $connect->connect_error);
@@ -25,8 +26,8 @@ $annual_adoption_price = $_POST['annual_adoption_price'];
 	
 	else {
 	
-		$sql2 = "INSERT INTO animal (animal_name, animal_species, annual_adoption_price)
-		values ('$animal_name','$animal_species','$annual_adoption_price')";
+		$sql2 = "INSERT INTO animal (animal_name, animal_species, annual_adoption_price, animal_photo)
+		values ('$animal_name','$animal_species','$annual_adoption_price','$animal_avatar')";
 		$result2 = mysqli_query($link, $sql2);
 		
 		if($result2)

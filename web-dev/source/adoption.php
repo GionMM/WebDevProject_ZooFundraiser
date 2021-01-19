@@ -50,6 +50,15 @@ require_once "config.php";
 					</li>
 					<li class="nav-item"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
 					<li class="nav-item"> <a class="nav-link" href="help.php">Support <span class="sr-only"></span></a> </li>
+					<?php 
+					if ( ( isset( $_SESSION[ "loggedin" ] ) ) && ( $_SESSION[ "loggedin" ] === true ) ) {
+						if($_SESSION["user_class"] == '1') {
+							echo '<li class="nav-item"> <a class="nav-link" href="admin-home.php">Admin Home <span class="sr-only"></span></a> </li>';
+						}
+					}
+					
+					
+					?>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 

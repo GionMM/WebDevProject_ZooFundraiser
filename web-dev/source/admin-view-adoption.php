@@ -3,6 +3,12 @@ session_start();
 
 require_once "config.php";
 
+if($_SESSION["user_class"]!='1')
+{
+	header( "location: main.php" );
+	exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,6 +44,8 @@ require_once "config.php";
 		<a href="admindonate.php"><i class="fa fa-money"></i>&emsp;Manage donation</a>
 		<a class="active" href="admin-view-adoption.php"><i class="fa fa-heart"></i>&emsp;Manage adoption</a>
 		<a href="adminstore.php"><i class="fa fa-shopping-bag"></i>&emsp;Manage store</a>
+		<a href="adminreport.php"><i class="fa fa-bar-chart"></i>&emsp;Report</a>
+		<a href="main.php"><i class="fa fa-home"></i>&emsp;User Homepage</a>
 		<a href="logout.php"><i class="fa fa-sign-out"></i>&emsp;Logout</a>
 
 	</div>
@@ -74,7 +82,7 @@ require_once "config.php";
 
 		echo "<th class='text-center' style='width:25%'>User Name</th>";
 		echo "<th class='text-center' style='width:25%'>Payment Method</th>";
-		echo "<th class='text-center' style='width:25%'>Amount (RM)</th>";
+		echo "<th class='text-center' style='width:25%'>Animal id</th>";
 		echo "<th class='text-center' style='width:25%'>Datetime</th>";
 		echo "</tr>";
 
@@ -83,7 +91,7 @@ require_once "config.php";
 		if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 			$month = $_POST[ "month" ];
 
-			$result = mysqli_query( $link, "SELECT * FROM donation where datetime like '_____$month%'" );
+			$result = mysqli_query( $link, "SELECT * FROM adoption where datetime like '_____$month%'" );
 			$num = mysqli_num_rows( $result );
 			if ( $month === "" ) {
 				$message = "*Please select a month";
@@ -97,7 +105,7 @@ require_once "config.php";
 					$row2 = mysqli_fetch_array( $que2 );
 					echo "<td class='text-center'>" . $row2[ 'fullname' ] . "</td>";
 					echo "<td class='text-center'>" . $row[ 'payment_method' ] . "</td>";
-					echo "<td class='text-center'>" . $row[ 'amount' ] . "</td>";
+					echo "<td class='text-center'>" . $row[ 'animal_id' ] . "</td>";
 					echo "<td class='text-center'>" . $row[ 'datetime' ] . "</td>";
 					echo '</tr>';
 

@@ -11,9 +11,6 @@
 		html {
 		  scroll-behavior: smooth;
 		}
-		body {
-/*			background-color: #CDCDCD;*/
-		}
 		
 		hr {
 			border: none;
@@ -21,14 +18,11 @@
 			color: #333;
 			background-color: #333;
 		}
+		body {
+			background-color: #D3D3D3;
+		}
 
-		.navbar {
-    -webkit-box-shadow: 0 8px 6px -6px #999;
-    -moz-box-shadow: 0 8px 6px -6px #999;
-    box-shadow: 0 8px 6px -6px #999;
 
-    /* the rest of your styling */
-}
 	</style>
 </head>
 
@@ -42,7 +36,7 @@
 		</div>
 	</div>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top ">
+	<nav class="shadow navbar navbar-expand-lg navbar-light bg-light sticky-top ">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -51,7 +45,7 @@
 		<div class="collapse navbar-collapse justify-content-md-center">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Home</a>
+					<a class="nav-link active" href="#">Home</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">About</a>
@@ -68,7 +62,7 @@
 	</nav>
 
 	<div class="container" style="margin-top: 2em; margin-bottom: 2em">
-		<div class="card" style="width: 100%;">
+		<div class="card shadow" style="width: 100%;">
 			<div class="card-body">
 
 				<section style="margin-top: 4em">
