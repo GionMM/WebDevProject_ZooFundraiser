@@ -219,7 +219,7 @@ for (i = 0; i < dropdown.length; i++) {
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/Gion.jpg" data-holder-rendered="true">
 					<h6>Min Ming</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Min Ming/Gion.html"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
@@ -231,7 +231,7 @@ for (i = 0; i < dropdown.length; i++) {
 				<div class="col-lg-2 col-md-6 col-sm-12 text-center">
 					<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../images/yy.jpg" data-holder-rendered="true">
 					<h6>Yong Yeong</h6>
-					<a href="#"> View portfolio → </a>
+					<a href="../portfolio/Yong Yeong/biography.html"> View portfolio → </a>
 <!--					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
 				</div>
 				<div class="col-lg-1 col-md-6 col-sm-12 text-center"></div>
