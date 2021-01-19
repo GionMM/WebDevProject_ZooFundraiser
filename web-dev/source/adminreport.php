@@ -27,39 +27,76 @@ require_once "config.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+    
 <!--Define graph-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
- google.load("visualization", "1", {packages:["corechart"]});
- google.setOnLoadCallback(drawChart);
- function drawChart() {
- var data = google.visualization.arrayToDataTable([
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
 
- ['amount','datetime'],
- <?php
-			$query = "SELECT SUM(amount) FROM order WHERE YEAR(datetime)='2021' GROUP BY MONTH(month)";
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Total Sales (RM)'],
+          <?php
+            $command = '';
+			      $query = "SELECT MONTH(datetime) as month, SUM(amount) as amount FROM `orders` WHERE YEAR(datetime)='2021' GROUP BY MONTH(datetime)";
 
-			 $exec = mysqli_query($con,$query);
-			 while($row = mysqli_fetch_array($exec)){
+            $exec = mysqli_query($link,$query);
+            $i=1;
+			       while($row = mysqli_fetch_array($exec)){
+                $string="['".$row['month']."'".",".$row['amount']."],";
+                $command .= $string;
+                echo $string;
+                $i++;
+            } 
+            while($i<13){
+              $string="['".$i."'".",0],";
+                $command .= $string;
+                echo $string;
+                $i++;
+            }
 
-			 echo "['".$row['amount']."',".$row['datetime']."],";
-			 }
 			 ?>
+      //  ['February',0],
+      //  ['March',0],
+      //  ['April',0],
+      //  ['May',0],
+      //  ['June',0],
+      //  ['July',0],
+      //  ['August',0],
+      //  ['September',0],
+      //  ['October',0],
+      //  ['November',0],
+      //  ['December',0],
+        ]);
 
- ]);
-
- var options = {
- title: 'Number of Sales per month',
-  pieHole: 0.5,
-          pieSliceTextStyle: {
-            color: 'black',
+        var options = {
+          chart: {
+            title: 'Merchandise Sales 2021',
+            subtitle: 'Total Sales per Month',
           },
-          legend: 'none'
- };
- var chart = new google.charts.Line(document.getElementById('linechart_material'));
- chart.draw(data, google.charts.Line.convertOptions(options));
- }
+          bars: 'vertical' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('linechart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        
+        
+      }
     </script>
+
+ 
+ <?php
+			// $query = "SELECT SUM(amount) as amount, DAY(datetime) as datetime FROM order WHERE YEAR(datetime)='2021' GROUP BY MONTH(month)";
+
+			//  $exec = mysqli_query($con,$query);
+			//  while($row = mysqli_fetch_array($exec)){
+      //   $string="[".$row['amount'].",".$row['datetime']."],";
+			//  echo $string;
+			//  } 
+			 ?>
   </head>
 
   <body>
