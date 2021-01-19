@@ -15,33 +15,46 @@ $error_message = "";
 
 if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 
-	$date = date( 'Y-m-d H:i:s' );
-
-	$fullname = $_POST[ 'fullName' ];
-	$phone = $_POST[ 'phone' ];
-	$address = $_POST[ 'address' ];
-	$zip = $_POST[ 'zip' ];
-
-	$address = $fullname . ', ' . $phone . ', ' . $address . ', ' . $zip;
-
-	$resultTotal = mysqli_query( $link, "SELECT sum(c.quantity*m.merch_price) FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='" . $user_id . "' " );
-	$row = mysqli_fetch_assoc( $resultTotal );
-	$totalAmount = $row[ 'sum(c.quantity*m.merch_price)' ];
-
-	$sqlCheckout = "INSERT INTO orders (user_id, payment_method, amount, datetime, delivery_address) VALUES ('" . $user_id . "', '1', '" . $totalAmount . "', '" . $date . "', '" . $address . "')";
-
-	if ( mysqli_query( $link, $sqlCheckout ) ) {
-		
-		mysqli_query( $link, 'DELETE from cart WHERE user_id = ' . $user_id . ' ' );
-		
-		echo "<script>";
-		echo "window.location.href='done-payment.php'";
-		echo "</script>";
-	} else {
-		echo "<script>";
-		echo "alert('There's something wrong.);";
-		echo "</script>";
+	if ($_POST['paymentMethod']==('credit'||'debit')){
+		$paymentMethod=1;
 	}
+
+	$query = "INSERT INTO `orders`(`order_id`, `user_id`, `payment_method`, `amount`, `datetime`, `delivery_address`) 
+	VALUES (NULL,$user_id,$paymentMethod,$total,CURRENT_TIMESTAMP(),'$address')";
+	mysqli_query($link, $query) or die("Insert Orders Failed");
+
+	$query="SELECT `order_id` FROM `orders` WHERE `user_id`=$user_id ORDER BY `datetime` DESC LIMIT 1";
+	$result = mysqli_query($link, $query) or die("Insert Orders Failed");
+	$row = mysqli_fetch_array($result);
+	$order_id=$row["order_id"];
+
+	$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
+	$result = mysqli_query($link, $query);
+
+	while ($row = mysqli_fetch_array($result)) {
+
+	  if ($result->num_rows > 0) {
+		  $merch_id 		= $row["merch_id"];
+		  $merch_name 	= $row["merch_name"];
+		  $merch_price 	= $row["merch_price"];
+		  $merch_photo 	= $row["merch_photo"];
+		  $quantity		= $row["quantity"];
+
+		  $query="INSERT INTO `orders_merch`(`order_id`, `merch_id`, `quantity`) VALUES ($order_id,$merch_id,$quantity)";
+		  mysqli_query($link, $query) or die("Insert Orders_Merch Failed");			
+	  }
+	}
+
+	$query="DELETE FROM `cart` WHERE `user_id`=$user_id";
+	mysqli_query($link, $query) or die("Clear Cart Failed");
+
+	mysqli_close($link);
+
+	echo "<script>";
+	echo "window.location.href='done-payment.php'";
+	echo "</script>";
+
+	die();
 
 }
 ?>
