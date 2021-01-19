@@ -28,10 +28,27 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 	$row = mysqli_fetch_assoc( $resultTotal );
 	$totalAmount = $row[ 'sum(c.quantity*m.merch_price)' ];
 
-	$sqlCheckout = "INSERT INTO orders (user_id, payment_method, amount, datetime, delivery_address) VALUES ('" . $user_id . "', '1', '" . $totalAmount . "', '" . $date . "', '" . $address . "')";
-
+	$sqlCheckout = "INSERT INTO orders (user_id, payment_method, amount, datetime, delivery_address) VALUES ('" . $user_id . "', '1', '" . $totalAmount . "', CURRENT_TIMESTAMP(), '" . $address . "')";
+	
 	if ( mysqli_query( $link, $sqlCheckout ) ) {
-		
+	
+		$query="SELECT `order_id` FROM `orders` WHERE `user_id`=$user_id ORDER BY `datetime` DESC LIMIT 1";
+		$result = mysqli_query($link, $query) or die("Insert Orders Failed");
+		$row = mysqli_fetch_array($result);
+		$order_id=$row["order_id"];
+
+		$query = "SELECT * FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='$user_id'";
+		$result = mysqli_query($link, $query);
+		while ($row = mysqli_fetch_array($result)) {
+
+		if ($result->num_rows > 0) {
+			$merch_id 		= $row["merch_id"];
+			$quantity		= $row["quantity"];
+
+			$query="INSERT INTO `orders_merch`(`order_id`, `merch_id`, `quantity`) VALUES ($order_id,$merch_id,$quantity)";
+			mysqli_query($link, $query) or die("Insert Orders_Merch Failed");			
+			}
+	  	}
 		mysqli_query( $link, 'DELETE from cart WHERE user_id = ' . $user_id . ' ' );
 		
 		echo "<script>";
