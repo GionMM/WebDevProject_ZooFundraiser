@@ -28,7 +28,7 @@ require_once "config.php";
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Website logo</a>
+			<a class="navbar-brand" href="main.php"><img src="../images/logo.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -79,9 +79,18 @@ require_once "config.php";
 							 }
 						 }
 						
-						echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span> 
+						if ($cartQuantity != NULL)
+						{
+							echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
 							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
 							</li>';
+						}
+						else {
+							echo ' <li><a class="nav-link" href="./cart.php" style="pointer-events: none; cursor: default;"><span class="fa fa-shopping-cart"></span>
+							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
+							</li>';
+							
+						}
 						
 						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')"> 
 							 Log out <span class="fa fa-sign-out"></span></a>
@@ -190,9 +199,10 @@ for (i = 0; i < dropdown.length; i++) {
 				<div class="col-md-6">
 
 					<div class="lead"><span><i class="fa fa-check-circle fa-3x" aria-hidden="true" style="vertical-align: middle; color: cornflowerblue;"></i> A certificate of adoption</span> </div>
-					<div class="lead"><span><i class="fa fa-check-circle fa-3x" aria-hidden="true" style="vertical-align: middle; color: cornflowerblue;"></i> A certificate of adoption</span> </div>
-					<div class="lead"><span><i class="fa fa-check-circle fa-3x" aria-hidden="true" style="vertical-align: middle; color: cornflowerblue;"></i> A certificate of adoption</span> </div>
-					<div class="lead"><span><i class="fa fa-check-circle fa-3x" aria-hidden="true" style="vertical-align: middle; color: cornflowerblue;"></i> A certificate of adoption</span> </div>
+					<div class="lead"><span><i class="fa fa-check-circle fa-3x" aria-hidden="true" style="vertical-align: middle; color: cornflowerblue;"></i> An exclusive live streaming of adopted animal</span> </div>
+					<div class="lead"><span><i class="fa fa-check-circle fa-3x" aria-hidden="true" style="vertical-align: middle; color: cornflowerblue;"></i> A cute animal-theme keychain*</span> </div>
+					<div class="lead"><span><i class="fa fa-check-circle fa-3x" aria-hidden="true" style="vertical-align: middle; color: cornflowerblue;"></i> An adorable tiger plush*</span> </div>
+					<small style="float: right;">* depends on the availability of stocks</small>
 
 
 
@@ -221,14 +231,13 @@ for (i = 0; i < dropdown.length; i++) {
 		<div class="container" id="terms">
 			<h2>Terms and conditions</h2>
 			<small>December 21, 2020</small>
-			<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 			<ul>
-				<li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-				<li>Donec id elit non mi porta gravida at eget metus.</li>
-				<li>Nulla vitae elit libero, a pharetra augue.</li>
+				<li>Please note that it takes at least 48 hours to process an adoption and it is then sent out by post. Please allow sufficient time for this when you place your booking.</li>
+				<li>All animals adopted remain the property of Colchester Zoo which reserves the right to transfer them to other establishments, as may be necessary. In such an event, adopters will be offered alternative animals.</li>
+				<li>No monetary value is attached to Complimentary Adoption certificate and they are not for resale. Any found to be resold will be invalidated. </li>
+			
 			</ul>
-			<p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-			<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+			
 		</div>
 		<br>
 		<br>

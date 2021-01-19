@@ -93,7 +93,7 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
 		<div class="container">
-			<a class="navbar-brand" href="#">Website logo &#124; <span class="lead">Cart checkout</span></a>
+						<a class="navbar-brand"href="main.php"><img src="../images/logo.png" style="width:120px"> &#124; <span class="lead">Adoption</span></a>
 
 			<ul class="navbar-nav ml-auto">
 				<li><a class="nav-link" href="./store-home.php"><span class="fa fa-home"></span> Home</a>
@@ -150,10 +150,10 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 
 							<li class="list-group-item d-flex justify-content-between bg-light">
 								<div class="text-success">
-									<h6 class="my-0">Promo code</h6>
-									<small>None</small>
+									<h6 class="my-0">Shipping fee</h6>
+<!--									<small></small>-->
 								</div>
-								<span class="text-success">-RM0</span>
+								<span class="text-success">+RM10</span>
 							</li>
 
 							<?php
@@ -163,10 +163,11 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 							$resultTotal = mysqli_query( $link, "SELECT sum(c.quantity*m.merch_price) FROM merch m, cart c WHERE m.merch_id=c.merch_id AND c.user_id='" . $user_id . "' " );
 							$row = mysqli_fetch_assoc( $resultTotal );
 							$sum = $row[ 'sum(c.quantity*m.merch_price)' ];
+							$sum = $sum+10;
 
 							echo '<li class="list-group-item d-flex justify-content-between">';
 							echo '<span>Total (RM)</span>';
-							echo '<strong id="totalAmount">' . $sum . '</strong>';
+							echo '<strong id="totalAmount">' . $sum. '</strong>';
 							echo '</li>';
 
 							?>
@@ -176,6 +177,7 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 
 						</ul>
 
+<!--
 						<form class="card p-2">
 							<div class="input-group">
 								<input type="text" class="form-control" placeholder="Promo code">
@@ -184,6 +186,7 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 								</div>
 							</div>
 						</form>
+-->
 
 
 					</div>

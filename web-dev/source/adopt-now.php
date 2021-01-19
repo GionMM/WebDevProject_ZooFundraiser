@@ -96,8 +96,7 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
 		<div class="container">
-			<a class="navbar-brand" href="#">Website logo &#124; <span class="lead">Adoption</span></a>
-			</button>
+			<a class="navbar-brand"href="main.php"><img src="../images/logo.png" style="width:120px"> &#124; <span class="lead">Adoption</span></a>
 
 			<ul class="navbar-nav ml-auto">
 

@@ -88,8 +88,7 @@ require_once "config.php";
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
 		<div class="container">
-			<a class="navbar-brand" href="#">Website logo &#124; <span class="lead">Donation</span></a>
-        </button>	
+						<a class="navbar-brand"href="main.php"><img src="../images/logo.png" style="width:120px"> &#124; <span class="lead">Adoption</span></a>
 			
 					<ul class="navbar-nav ml-auto">
 				<li><a class="nav-link" href="./donation.php"><span class="fa fa-home"></span> Home</a>

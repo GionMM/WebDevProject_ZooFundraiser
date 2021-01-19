@@ -55,7 +55,7 @@ require_once "config.php";
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Website logo</a>
+			<a class="navbar-brand" href="main.php"><img src="../images/logo.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -105,10 +105,21 @@ require_once "config.php";
 								 	$cartQuantity		= $row[ "sum(quantity)" ];
 							 }
 						 }
-
-						echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
+						
+						if ($cartQuantity != NULL)
+						{
+							echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
 							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
 							</li>';
+						}
+						else {
+							echo ' <li><a class="nav-link" href="./cart.php" style="pointer-events: none; cursor: default;"><span class="fa fa-shopping-cart"></span>
+							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
+							</li>';
+							
+						}
+
+
 
 						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')">
 							 Log out <span class="fa fa-sign-out"></span></a>

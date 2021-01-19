@@ -28,7 +28,7 @@ if($_SESSION["user_class"]!='1')
 
 
 	<div class="sidebar">
-		<a style="text-align: center">Website logo</a>
+		<a style="text-align: center"><img src="../images/logo2.png" style="width: 150px"></a>
 		<hr>
 
 		<a href="admin-home.php"><i class="fa fa-tachometer"></i>&emsp;Dashboard</a>

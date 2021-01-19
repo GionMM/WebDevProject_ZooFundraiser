@@ -59,7 +59,7 @@ require_once "config.php";
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
 		<div class="container">
-			<a class="navbar-brand" href="#">Website logo &#124; <span class="lead">Shopping cart</span></a>
+						<a class="navbar-brand"href="main.php"><img src="../images/logo.png" style="width:120px"> &#124; <span class="lead">Shopping cart</span></a>
 
 			<ul class="navbar-nav ml-auto">
 				<li><a class="nav-link" href="./store-home.php"><span class="fa fa-home"></span> Home</a>
@@ -127,7 +127,9 @@ require_once "config.php";
 //									echo '<form method="POST">';
 									
 									$x = 'location.href="cart-increment.php?merch_id='.$merch_id.'" ';
-									$y = 'location.href="cart-decrement.php?merch_id='.$merch_id.'" ';										 
+									$y = 'location.href="cart-decrement.php?merch_id='.$merch_id.'" ';	
+									$z = 'location.href="cart-remove-item.php?merch_id='.$merch_id.'" ';
+										 
 									echo '<input type="button" value="-" class="button-minus" data-field="quantity" onClick='.$y.' >';
 									echo '<input data-id="'.$merch_id.'" data-price="'.$merch_price.'" type="number" step="1" value="'.$quantity.'" name="quantity" class="quantity-field" onKeyDown="return false">';
 									echo '<input type="button" value="+" class="button-plus" data-field="quantity" onClick='.$x.' >';
@@ -139,8 +141,8 @@ require_once "config.php";
 										 
 									echo '<div class="d-flex justify-content-between align-items-center">';
 									echo '<div>';
-									echo '<a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3">';
-									echo '<i class="fas fa-trash-alt mr-1"></i> Remove item </a>';
+									echo '<a href="cart-remove-item.php?merch_id='.$merch_id.'" type="button" class="card-link-secondary small text-uppercase mr-3">';
+									echo '<i class="fa fa-trash mr-1"></i> Remove item </a>';
 									echo '</div>';
 									echo '</div>';
 										 

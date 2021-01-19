@@ -33,7 +33,7 @@ require_once "config.php";
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Website logo</a>
+			<a class="navbar-brand" href="main.php"><img src="../images/logo.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -85,9 +85,18 @@ require_once "config.php";
 							 }
 						 }
 						
-						echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span> 
+						if ($cartQuantity != NULL)
+						{
+							echo ' <li><a class="nav-link" href="./cart.php"><span class="fa fa-shopping-cart"></span>
 							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
 							</li>';
+						}
+						else {
+							echo ' <li><a class="nav-link" href="./cart.php" style="pointer-events: none; cursor: default;"><span class="fa fa-shopping-cart"></span>
+							 cart <span class="badge badge-secondary badge-pill">'.$cartQuantity.'</span></a>
+							</li>';
+							
+						}
 						
 						echo '	<li><a class="nav-link" href="logout.php" onClick="return confirm(\'are you sure?\')"> 
 							 Log out <span class="fa fa-sign-out"></span></a>
@@ -220,6 +229,16 @@ for (i = 0; i < dropdown.length; i++) {
 							<div class="accordion-item-body">
 								<div class="accordion-item-body-content">
 									Please be informed that we are unable to support any changes to an order, especially to the shipping address after it has been acknowledged by the merchants. If you wish to change, we suggest you cancel the existing order and place a new order. 
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<div class="accordion-item-header">
+								Where can I watch the live streaming of my adoptee?
+							</div>
+							<div class="accordion-item-body">
+								<div class="accordion-item-body-content">
+									The link for the live streaming for your adopted animal will be shared to your registered email inbox.
 								</div>
 							</div>
 						</div>
