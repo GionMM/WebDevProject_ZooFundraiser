@@ -11,7 +11,7 @@ require_once "config.php";
   <head>
     <meta charset="utf-8">
     <title>
-      Admin Zoo Fundraiser Donation
+      Admin Zoo Fundraiser Report
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/sidebar.css" rel="stylesheet" type="text/css">
@@ -103,13 +103,14 @@ require_once "config.php";
 	</form>
 
 
-  <div class="card" style="margin-top:20px;margin-left:50px;width:35%;height:150px;box-shadow: 1px 2px 10px grey;display:inline-block">
+  <div class="card" style="margin-top:20px;width:35%;height:150px;box-shadow: 1px 2px 10px grey;display:inline-block">
   <div class="card-body">
-  <h4 class="card-title" style="text-align:center;font-size:30px;font-weight:bold">Total Sales:</h4>
-  <h5 style="text-align:center;margin-top:30px;font-size:30px">
+  <h4 class="card-title" style="text-align:center;">Total Sales:</h4>
+  <h5 style="text-align:center;margin-top:30px;">
     <?php
     $month = "";
-  	$message = "";
+    $message = "";
+    $sum = 0;
   	if($_SERVER["REQUEST_METHOD"] == "POST")
      {
   	   $month = $_POST["month"];
@@ -128,9 +129,10 @@ require_once "config.php";
         $result = mysqli_query($link, 'SELECT SUM(amount) AS value_sum FROM orders');
         $row = mysqli_fetch_assoc($result);
         $sum = $row['value_sum'];
-        echo $sum;
+      
   		}
-  	   }
+       }
+       echo $sum;
      }
   ?>
 </h5>
@@ -138,13 +140,14 @@ require_once "config.php";
 </div>
 
 
-<div class="card" style="margin-top:40px;width:35%;height:150px;box-shadow: 1px 2px 10px grey;display:inline-block">
+<div class="card" style="margin-top:40px;margin-left:50px;width:35%;height:150px;box-shadow: 1px 2px 10px grey;display:inline-block">
 <div class="card-body">
-<h4 class="card-title" style="text-align:center;font-size:30px;font-weight:bold">Total Donation Received:</h4>
-<h5 style="text-align:center;margin-top:30px;font-size:30px">
+<h4 class="card-title" style="text-align:center;">Total Donation Received:</h4>
+<h5 style="text-align:center;margin-top:30px;">
   <?php
   $month = "";
   $message = "";
+  $sum = 0;
   if($_SERVER["REQUEST_METHOD"] == "POST")
    {
      $month = $_POST["month"];
@@ -163,9 +166,10 @@ require_once "config.php";
       $result = mysqli_query($link, 'SELECT ROUND(SUM(amount), 2) AS donate_sum FROM donation WHERE amount IS NOT NULL');
       $row = mysqli_fetch_assoc($result);
       $sum = $row['donate_sum'];
-      echo $sum;
+      
     }
      }
+     echo $sum;
    }
 ?>
 </h5>
@@ -173,13 +177,14 @@ require_once "config.php";
 </div>
 
 
-<div class="card" style="margin-top:10px;margin-left:300px;width:35%;height:150px;box-shadow: 1px 2px 10px grey;display:inline-block">
+<div class="card" style="margin-top:50px;margin-left:250px;width:35%;height:150px;box-shadow: 1px 2px 10px grey;display:inline-block">
 <div class="card-body">
-<h4 class="card-title" style="text-align:center;font-size:30px;font-weight:bold">Number of Animals Adopted:</h4>
-<h5 style="text-align:center;margin-top:30px;font-size:30px">
+<h4 class="card-title" style="text-align:center;">Number of Animals Adopted:</h4>
+<h5 style="text-align:center;margin-top:30px;">
   <?php
   $month = "";
   $message = "";
+  $sum = 0;
   if($_SERVER["REQUEST_METHOD"] == "POST")
    {
      $month = $_POST["month"];
@@ -198,9 +203,10 @@ require_once "config.php";
       $result = mysqli_query($link, 'SELECT COUNT(adoption_id) AS adoptsum FROM adoption;');
       $row = mysqli_fetch_assoc($result);
       $sum = $row['adoptsum'];
-      echo $sum;
+      
     }
      }
+     echo $sum;
    }
 ?>
 </h5>
