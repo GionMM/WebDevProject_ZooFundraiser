@@ -5,7 +5,7 @@ require_once "config.php";
 
 if($_SESSION["user_class"]!='1')
 {
-	header( "location: main.php" );we
+	header( "location: main.php" );
 	exit;
 }
 

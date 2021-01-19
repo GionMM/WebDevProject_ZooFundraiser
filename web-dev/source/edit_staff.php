@@ -87,8 +87,7 @@ if($_SESSION["user_class"]!='1')
 					</tr>
 					<tr>
 						<td>Password</td>
-						<Td><input class="form-control" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php echo $rows['password'];?>" name="password"/>
-						</td>
+						<Td><input class="form-control" type="password" pattern=".{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php echo $rows['password'];?>" name="password"/>
 					</tr>
 					<tr>
 						<td>Fullname</td>

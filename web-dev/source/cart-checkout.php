@@ -222,6 +222,18 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 									Phone number required.
 								</div>
 							</div>
+							
+							<script>
+							var x = document.querySelector('#phone');
+
+							x.addEventListener('input', restrictNumber);
+								function restrictNumber (e) {  
+									var newValue = this.value.replace(new RegExp(/[^\d]/,'ig'), "");
+												  this.value = newValue;
+													
+								
+								}
+							</script>
 
 							<div class="mb-3">
 								<label for="address">Full Address</label>
@@ -263,6 +275,19 @@ if ( isset( $_POST[ 'proceedPayment' ] ) ) {
 									<div class="invalid-feedback">
 										Zip code required.
 									</div>
+									
+									<script>
+							var x = document.querySelector('#zip');
+
+							x.addEventListener('input', restrictNumber);
+								function restrictNumber (e) {  
+									var newValue = this.value.replace(new RegExp(/[^\d]/,'ig'), "");
+												  this.value = newValue;
+													
+								
+								}
+							</script>
+									
 								</div>
 							</div>
 

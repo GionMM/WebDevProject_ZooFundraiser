@@ -44,8 +44,8 @@ require_once "config.php";
 						<div class="dropdown-menu" aria-labelledby="dropdown07">
 							<a class="dropdown-item" href="./donation.php">Donation</a>
 							<a class="dropdown-item" href="./adoption.php">Adoption</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Learn more</a>
+<!--							<div class="dropdown-divider"></div>-->
+<!--							<a class="dropdown-item" href="#">Learn more</a>-->
 						</div>
 					</li>
 					<li class="nav-item"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>

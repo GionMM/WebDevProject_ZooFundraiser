@@ -54,8 +54,8 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 
 	if ( empty( trim( $_POST[ "password" ] ) ) ) {
 		$password_err = "Please enter a password.";
-	} elseif ( strlen( trim( $_POST[ "password" ] ) ) < 6 ) {
-		$password_err = "Password must have atleast 6 characters.";
+	} elseif ( strlen( trim( $_POST[ "password" ] ) ) < 8 ) {
+		$password_err = "Password must have atleast 8 characters.";
 	} else {
 		$password = trim( $_POST[ "password" ] );
 	}
@@ -138,7 +138,7 @@ if ( $_SERVER[ "REQUEST_METHOD" ] == "POST" ) {
 			</span>
 		</div>
 		<div class="form-label-group">
-			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required value="<?php echo $password; ?>">
+			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required value="<?php echo $password; ?>">
 			<label for="inputPassword">Password</label>
 			<span class="help-block">
 				<?php echo $password_err; ?>

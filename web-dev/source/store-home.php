@@ -97,8 +97,8 @@ require_once "config.php";
 						<div class="dropdown-menu" aria-labelledby="dropdown07">
 							<a class="dropdown-item" href="./donation.php">Donation</a>
 							<a class="dropdown-item" href="./adoption.php">Adoption</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Learn more</a>
+<!--							<div class="dropdown-divider"></div>-->
+<!--							<a class="dropdown-item" href="#">Learn more</a>-->
 						</div>
 					</li>
 					<li class="nav-item active"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
@@ -330,14 +330,12 @@ for (i = 0; i < dropdown.length; i++) {
 		<div class="container" id="terms">
 			<h2>Terms and conditions</h2>
 			<small>December 21, 2020</small>
-			<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 			<ul>
-				<li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-				<li>Donec id elit non mi porta gravida at eget metus.</li>
-				<li>Nulla vitae elit libero, a pharetra augue.</li>
+				<li>Please note that it takes at least 48 hours to process an adoption and it is then sent out by post. Please allow sufficient time for this when you place your booking.</li>
+				<li>All animals adopted remain the property of Colchester Zoo which reserves the right to transfer them to other establishments, as may be necessary. In such an event, adopters will be offered alternative animals.</li>
+				<li>No monetary value is attached to Complimentary Adoption certificate and they are not for resale. Any found to be resold will be invalidated. </li>
+			
 			</ul>
-			<p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-			<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
 		</div>
 		<br>
 		<br>

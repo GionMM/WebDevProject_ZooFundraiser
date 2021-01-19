@@ -50,8 +50,8 @@ require_once "config.php";
 						<div class="dropdown-menu" aria-labelledby="dropdown07">
 							<a class="dropdown-item" href="./donation.php">Donation</a>
 							<a class="dropdown-item" href="./adoption.php">Adoption</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Learn more</a>
+<!--							<div class="dropdown-divider"></div>-->
+<!--							<a class="dropdown-item" href="#">Learn more</a>-->
 						</div>
 					</li>
 					<li class="nav-item"> <a class="nav-link" href="./store-home.php">Store <span class="sr-only"></span></a> </li>
@@ -272,7 +272,7 @@ for (i = 0; i < dropdown.length; i++) {
 
 				<div class="col-md-5">
 					<iframe allow="microphone;" width="100%" height="530" src="https://console.dialogflow.com/api-client/demo/embedded/701451f6-7935-47d0-bece-b23492e6cac5">
-				</iframe>
+					</iframe>
 				
 				</div>
 
